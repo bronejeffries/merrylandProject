@@ -11,12 +11,12 @@ class Teacher extends Model
     protected $fillable = ['name'];
 
     public function students(){
-    	return $this->hasMany('App\Student','mentor_id');
+    	return $this->hasMany(Student::class,'mentor_id');
     }
 
     public function role(){
 
-    	return $this->belongsTo('App\Role');
+    	return $this->belongsTo(Role::class);
     }
 
 }

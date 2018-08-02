@@ -12,6 +12,6 @@ class Role extends Model
 
     public function teachers(){
 
-    	return $this->belongsToMany('App\Teacher');
+    	return $this->belongsToMany(Teacher::class);
     }
 }
