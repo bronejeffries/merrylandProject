@@ -14,7 +14,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return view('students.index', compact('students'));
 
         
     }
@@ -26,7 +27,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -37,7 +38,35 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Student::create($request->validate([
+            'regiNo',
+                            'stdNo'=> 'required',
+                            'class_id',
+                            'level'=> 'required',
+                            'mentor_id',
+                            'stream' => 'required',
+                            'shift'=> 'required',
+                            'firstName'=> 'required',
+                            'middleName'=>'nullable',
+                            'lastName'=> 'required',
+                            'gender'=> 'required',
+                            'religion'=> 'required',
+                            'nationality'=> 'required',
+                            'dob'=> 'required',
+                            'photo'=> 'required',
+                            'extraActivity'=>'nullable',
+                            'remarks'=>'nullable',
+                            'fatherName'=>'nullable',
+                            'fatherCellNo'=>'nullable',
+                            'motherName'=>'nullable',
+                            'motherCellNo'=>'nullable',
+                            'localGuardian'=>'nullable',
+                            'localGuardianCell'=>'nullable',
+                            'presentAddress'=>'nullable',
+                            'parmanentAddress'=>'nullable'
+        ]));
+        Session::flash('success', 'You have succsssfully created a  student');
+        return redirect()->route('students.index');
     }
 
     /**
@@ -48,7 +77,7 @@ class StudentsController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -59,7 +88,7 @@ class StudentsController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -71,7 +100,34 @@ class StudentsController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        
+        $student->update($request->validate([
+                            'regiNo'=>'required',
+                            'stdNo'=> 'required',
+                            'level'=> 'required',
+                            'stream' => 'required',
+                            'shift'=> 'required',
+                            'firstName'=> 'required',
+                            'middleName'=>'nullable',
+                            'lastName'=> 'required',
+                            'gender'=> 'required',
+                            'religion'=> 'required',
+                            'nationality'=> 'required',
+                            'dob'=> 'required',
+                            'photo'=> 'required',
+                            'extraActivity'=>'nullable',
+                            'remarks'=>'nullable',
+                            'fatherName'=>'nullable',
+                            'fatherCellNo'=>'nullable',
+                            'motherName'=>'nullable',
+                            'motherCellNo'=>'nullable',
+                            'localGuardian'=>'nullable',
+                            'localGuardianCell'=>'nullable',
+                            'presentAddress'=>'nullable',
+                            'parmanentAddress'=>'nullable'
+        ]));
+        Session::flash('success', 'You have succsssfully updated a  student');
+        return redirect()->route('students.index');
     }
 
     /**
@@ -82,6 +138,7 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index');
     }
 }
