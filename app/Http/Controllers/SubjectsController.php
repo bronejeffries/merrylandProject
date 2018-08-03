@@ -68,7 +68,7 @@ class SubjectsController extends Controller
 
             if($subject){
                 return redirect()->route('subject.index');
-                // ->with('success' , 'Company created successfully');
+                ->with('success' , 'Subject created successfully');
             }
             return back()->withInput();
 
@@ -84,9 +84,6 @@ class SubjectsController extends Controller
     public function show(Subject $subject)
     {
         //
-
-        $subject = Subject::find($subject->id);
-
         return view('pages.subjects.show', ['subject'=>$subject]);
     }
 
@@ -99,9 +96,6 @@ class SubjectsController extends Controller
     public function edit(Subject $subject)
     {
         //
-
-        $subject = Subject::find($subject->id);
-        
         return view('pages.subject.edit', ['subject'=>$subject]);
     }
 
@@ -125,8 +119,8 @@ class SubjectsController extends Controller
                                 ]);
 
       if($subjectUpdate){
-          return redirect()->route('companies.index');
-          // ->with('success' , 'Company updated successfully');
+          return redirect()->route('subjects.index');
+          ->with('success' , 'Subject updated successfully');
       }
       //redirect
       return back()->withInput();
@@ -144,15 +138,15 @@ class SubjectsController extends Controller
     {
         //
 
-         $findSubject = Subject::find($subject->id);
-        if($findSubject->delete()){
+         
+        if($subject->delete()){
             
             //redirect
-            return redirect()->route('companies.index');
-            // ->with('success' , 'Company deleted successfully');
+            return redirect()->route('subjects.index');
+            ->with('success' , 'Subject deleted successfully');
         }
 
         return back()->withInput();
-        // ->with('error' , 'Company could not be deleted');
+       ->with('error' , 'Subject could not be deleted');
     }
 }

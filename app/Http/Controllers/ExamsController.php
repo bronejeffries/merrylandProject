@@ -22,6 +22,9 @@ class ExamsController extends Controller
     public function index()
     {
         //
+        $Exams = Exam::all();
+
+        return view('pages.Exams.index',compact('Exams'));
 
 
     }
@@ -93,6 +96,8 @@ class ExamsController extends Controller
     public function show(Exam $exam)
     {
         //
+
+        return view('pages.exams.show',compact('exam'));
     }
 
     /**
@@ -104,6 +109,8 @@ class ExamsController extends Controller
     public function edit(Exam $exam)
     {
         //
+
+        return view('pages.exams.edit',compact('exam'));
     }
 
     /**
@@ -127,5 +134,12 @@ class ExamsController extends Controller
     public function destroy(Exam $exam)
     {
         //
+
+        if ($exam->delete()) {
+            
+            return view('pages.exams.index')->with('success','Exam deleted');
+        }
+
+        return back()->withInput();
     }
 }
