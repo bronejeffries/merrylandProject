@@ -9,7 +9,7 @@ class Subject extends Model
     //
 
 
-    protected $fillable = ['code','name','is_core','available_for_stdgroup_id','teacher_id'];
+    protected $fillable = ['code','name','is_core','available_for_stdgroup_id'];
 
     public function students(){
 
@@ -30,6 +30,8 @@ class Subject extends Model
 
     	return $this->belongsToMany('App\Teacher');
     }
+
+    
 
     public function studentgroup(){
     	return $this->belongsTo('App\StudentGroup');
