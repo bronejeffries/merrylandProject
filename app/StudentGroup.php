@@ -14,6 +14,6 @@ class StudentGroup extends Model
 
     public function students(){
 
-    	return $this->hasMany('App\Student','level');
+    	return $this->hasMany(Student::class,'level');
     }
 }

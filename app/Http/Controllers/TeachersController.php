@@ -14,7 +14,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+        return view('teachers.index', compact('teachers'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //
+        return view('teachers.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Teacher::create($request->validate([
+
+        ]));
+        Session::flash('success', 'You have successfully created a teacher');
+        return redirect()->route('teachers.index');
     }
 
     /**
@@ -46,7 +51,7 @@ class TeachersController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        return view('teachers.show',compact('teacher'));
     }
 
     /**
@@ -57,7 +62,7 @@ class TeachersController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('teachers.edit',compact('teacher'));
     }
 
     /**
@@ -69,7 +74,11 @@ class TeachersController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        $teacher->update($request->validate([
+
+            ]));
+            Session::flash('success', 'You have successfully updated a teacher');
+            return redirect()->route('teachers.index');
     }
 
     /**
@@ -80,6 +89,7 @@ class TeachersController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        return redirect()->route('teachers.index');
     }
 }
