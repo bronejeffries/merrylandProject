@@ -13,7 +13,7 @@ class Subject extends Model
 
     public function students(){
 
-    	return $this->belongsToMany('App\Student');
+    	return $this->belongsToMany(Student::class);
     }
 
     public function classes(){

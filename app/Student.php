@@ -34,19 +34,19 @@ class Student extends Model
                             'parmanentAddress',
                             'isActive'];
 
-    public function class(){
-    	return $this->belongsTo('App\Class');
+    public function sclass(){
+    	return $this->belongsTo(SClass::class);
     }
 
     public function subjects(){
-    	return $this->hasMany('App\Subject');
+    	return $this->hasMany(Subject::class);
     }
 
     public function level(){
-    	return $this->belongsTo('App\StudentGroup','level');
+    	return $this->belongsTo(StudentGroup::class,'level');
     }
 
     public function mentor(){
-        return $this->belongsTo('App\Teacher','mentor_id');
+        return $this->belongsTo(Teacher::class,'mentor_id');
     }
 }
