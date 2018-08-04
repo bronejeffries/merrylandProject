@@ -25,11 +25,13 @@ class CreateSubjectsTable extends Migration
 
             $table->boolean('is_core')->default(True);
             $table->integer('available_for_stdgroup_id')->unsigned();
-            $table->integer('teacher_id')->unsigned();
+            
+            // $table->integer('teacher_id')->unsigned();
 
 
             $table->foreign('available_for_stdgroup_id')->references('id')->on('student_groups');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            
+            //$table->foreign('teacher_id')->references('id')->on('teachers');
 
             $table->timestamps();
 

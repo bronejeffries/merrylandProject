@@ -20,4 +20,9 @@ class Teacher extends Model
     	return $this->belongsTo(Role::class);
     }
 
+    public function subjects(){
+
+    	return $this->belongsToMany('App\Subject');
+    }
+
 }

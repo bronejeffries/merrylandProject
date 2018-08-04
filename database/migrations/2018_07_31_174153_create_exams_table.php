@@ -34,8 +34,8 @@ class CreateExamsTable extends Migration
             
             //term details
 
-            // $table->string('term_id');
-            // $table->date('academic_year_id');
+            $table->string('term_id');
+            $table->date('academic_year_id');
 
 
             // $table->decimal('point',3,2);
@@ -46,8 +46,8 @@ class CreateExamsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
 
             $table->foreign('class_id')->references('id')->on('classes');
-            // $table->foreign('term_id')->references('id')->on('terms');
-            // $table->foreign('academic_year_id')->references('id')->on('academic_years');
+            $table->foreign('term_id')->references('id')->on('terms');
+            $table->foreign('academic_year_id')->references('id')->on('academic_years');
             
             $table->foreign('subject_id')->references('id')->on('subjects');
             

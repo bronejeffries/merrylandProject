@@ -12,9 +12,21 @@ class ExamsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public _construct(){
+
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //
+        $Exams = Exam::all();
+
+        return view('pages.Exams.index',compact('Exams'));
+
+
     }
 
     /**
@@ -25,6 +37,8 @@ class ExamsController extends Controller
     public function create()
     {
         //
+
+        return view('pages.exams.create');
     }
 
     /**
@@ -35,7 +49,42 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check if subject exam column has not yet been created already 
+
+        $findExam = Exam::where('student_id',$request->input('student_id'))
+                        ->where('class_id',$request->input('class_id'))
+                        ->where('subject_id',$request->input('subject_id'))
+                        ->where('term_id',$request->input('term_id'))
+                        ->where('academic_year_id',$request->input('academic_year_id'))
+                        ->first();
+        if ($findExam) {
+            
+            update($request,$findExam->id);
+        }
+
+        //if the exam doesnot exist
+
+
+         $exam = Exam::create([
+                'student_id'=>$request->input('student_id'),
+                'class_id'=$request->input('class_id'),
+                'subject_id'=>$request->input('subject_id'),
+                $request->input('exam_type')=>$request->input('marks'),
+                'term_id'=>$request->input('term_id'),
+                'academic_year_id'=>$request->input('academic_year_id')
+            ]);
+
+
+            if($exam){
+
+                return back();
+                // return redirect()->route('exams.', ['company'=> $company->id])
+                // ->with('success' , 'Company created successfully');
+            }
+        
+            return back()->withInput();
+            // ->with('errors', 'Error creating new company');
+
     }
 
     /**
@@ -47,6 +96,8 @@ class ExamsController extends Controller
     public function show(Exam $exam)
     {
         //
+
+        return view('pages.exams.show',compact('exam'));
     }
 
     /**
@@ -58,6 +109,8 @@ class ExamsController extends Controller
     public function edit(Exam $exam)
     {
         //
+
+        return view('pages.exams.edit',compact('exam'));
     }
 
     /**
@@ -81,5 +134,12 @@ class ExamsController extends Controller
     public function destroy(Exam $exam)
     {
         //
+
+        if ($exam->delete()) {
+            
+            return view('pages.exams.index')->with('success','Exam deleted');
+        }
+
+        return back()->withInput();
     }
 }
