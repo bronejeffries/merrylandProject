@@ -34,7 +34,7 @@ class SubjectsController extends Controller
       
         if ($teacher) {
            
-           return view('pages.subjects.index',['subjects'=>$teacher->subjects]); 
+           return view('subjects.index',['subjects'=>$teacher->subjects]); 
         }
     }
 
@@ -47,7 +47,7 @@ class SubjectsController extends Controller
     {
         //
 
-        return view('pages.subjects.create');
+        return view('subjects.create');
     }
 
     /**
@@ -60,11 +60,12 @@ class SubjectsController extends Controller
     {
         //
 
-         $subject = Subject::create( ['code'=>$request->input('code'),
-                                        'name'=>$request->input('name'),
-                                        'is_core'=>$request->input('is_core'),
-                                        'available_for_stdgroup_id'=>$request->input('student_group')
-                                    ]);
+         $subject = Subject::create( 
+            ['code'=>$request->input('code'),
+            'name'=>$request->input('name'),
+             'is_core'=>$request->input('is_core'),
+              'available_for_stdgroup_id'=>$request->input('student_group')
+              ]);
 
             if($subject){
                 return redirect()->route('subject.index')
@@ -84,7 +85,7 @@ class SubjectsController extends Controller
     public function show(Subject $subject)
     {
         //
-        return view('pages.subjects.show', ['subject'=>$subject]);
+        return view('subjects.show', ['subject'=>$subject]);
     }
 
     /**
@@ -96,7 +97,7 @@ class SubjectsController extends Controller
     public function edit(Subject $subject)
     {
         //
-        return view('pages.subject.edit', ['subject'=>$subject]);
+        return view('subject.edit', ['subject'=>$subject]);
     }
 
     /**
