@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\StudentGroup;
+use App\Student;
 use Illuminate\Http\Request;
 
 class StudentGroupsController extends Controller
@@ -24,7 +25,7 @@ class StudentGroupsController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**

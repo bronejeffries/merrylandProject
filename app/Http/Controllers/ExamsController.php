@@ -13,7 +13,7 @@ class ExamsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public _construct(){
+    public function  _construct(){
 
         $this->middleware('auth');
     }
@@ -22,9 +22,9 @@ class ExamsController extends Controller
     public function index()
     {
         //
-        $Exams = Exam::all();
+        $exams = Exam::all();
 
-        return view('pages.Exams.index',compact('Exams'));
+        return view('pages.Exams.index',compact('exams'));
 
 
     }
@@ -67,7 +67,7 @@ class ExamsController extends Controller
 
          $exam = Exam::create([
                 'student_id'=>$request->input('student_id'),
-                'class_id'=$request->input('class_id'),
+                'class_id'=>$request->input('class_id'),
                 'subject_id'=>$request->input('subject_id'),
                 $request->input('exam_type')=>$request->input('marks'),
                 'term_id'=>$request->input('term_id'),
