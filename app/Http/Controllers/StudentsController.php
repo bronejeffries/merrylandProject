@@ -39,7 +39,7 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         Student::create($request->validate([
-            'regiNo',
+                             'regiNo'=>'required',
                             'stdNo'=> 'required',
                             'class_id',
                             'level'=> 'required',
