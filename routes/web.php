@@ -21,4 +21,3 @@ Route::get('/', function () {
 Route::resource('teachers', 'TeachersController');
 Route::resource('subjects','SubjectsController');
 Route::resource('students', 'StudentsController');
-
