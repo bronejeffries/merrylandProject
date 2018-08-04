@@ -29,7 +29,7 @@ class SubjectsController extends Controller
        {     
                $subjets = Subject::all();
        
-               return view('pages.subjects.index',['subjects'=>$subjects]);}
+               return view('subjects.index',['subjects'=>$subjects]);}
         $teacher = Teacher::where('id',Auth::user()->id)->first();
       
         if ($teacher) {
