@@ -67,7 +67,7 @@ class SubjectsController extends Controller
                                     ]);
 
             if($subject){
-                return redirect()->route('subject.index');
+                return redirect()->route('subject.index')
                 ->with('success' , 'Subject created successfully');
             }
             return back()->withInput();
@@ -119,7 +119,7 @@ class SubjectsController extends Controller
                                 ]);
 
       if($subjectUpdate){
-          return redirect()->route('subjects.index');
+          return redirect()->route('subjects.index')
           ->with('success' , 'Subject updated successfully');
       }
       //redirect
@@ -146,7 +146,7 @@ class SubjectsController extends Controller
             ->with('success' , 'Subject deleted successfully');
         }
 
-        return back()->withInput();
+        return back()->withInput()
        ->with('error' , 'Subject could not be deleted');
     }
 }

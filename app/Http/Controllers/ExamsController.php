@@ -13,7 +13,7 @@ class ExamsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public _construct(){
+    public function _construct(){
 
         $this->middleware('auth');
     }
