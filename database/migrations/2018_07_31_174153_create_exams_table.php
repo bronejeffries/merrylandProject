@@ -43,13 +43,13 @@ class CreateExamsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('student_id')->references('id')->on('students');
+            // $table->foreign('student_id')->references('id')->on('students');
 
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->foreign('term_id')->references('id')->on('terms');
-            $table->foreign('academic_year_id')->references('id')->on('academic_years');
+            // $table->foreign('class_id')->references('id')->on('classes');
+            // $table->foreign('term_id')->references('id')->on('terms');
+            // $table->foreign('academic_year_id')->references('id')->on('academic_years');
             
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            // $table->foreign('subject_id')->references('id')->on('subjects');
             
 
         });

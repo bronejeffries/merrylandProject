@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 
+
 class StudentsController extends Controller
 {
     /**
@@ -27,7 +28,9 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        // $classes = _Class::all();
+        // $streams = Stream::all();
+        return view('students.create', compact('streams', 'classes'));
     }
 
     /**
@@ -38,6 +41,7 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         Student::create($request->validate([
                              'regiNo'=>'required',
                             'stdNo'=> 'required',
@@ -103,7 +107,6 @@ class StudentsController extends Controller
         
         $student->update($request->validate([
                             'regiNo'=>'required',
-                            'stdNo'=> 'required',
                             'level'=> 'required',
                             'stream' => 'required',
                             'shift'=> 'required',
@@ -116,7 +119,6 @@ class StudentsController extends Controller
                             'dob'=> 'required',
                             'photo'=> 'required',
                             'extraActivity'=>'nullable',
-                            'remarks'=>'nullable',
                             'fatherName'=>'nullable',
                             'fatherCellNo'=>'nullable',
                             'motherName'=>'nullable',

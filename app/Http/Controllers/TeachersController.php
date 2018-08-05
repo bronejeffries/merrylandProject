@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use Illuminate\Http\Request;
-
+use App\Subject;
 class TeachersController extends Controller
 {
     /**
@@ -25,7 +25,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+        $subjects= Subject::all();
+        return view('teachers.create', compact('subjects'));
     }
 
     /**
@@ -36,8 +37,9 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         Teacher::create($request->validate([
-
+           
         ]));
         Session::flash('success', 'You have successfully created a teacher');
         return redirect()->route('teachers.index');

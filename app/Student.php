@@ -39,7 +39,7 @@ class Student extends Model
     }
 
     public function subjects(){
-    	return $this->hasMany(Subject::class);
+    	return $this->belongsToMany(Subject::class);
     }
 
     public function level(){

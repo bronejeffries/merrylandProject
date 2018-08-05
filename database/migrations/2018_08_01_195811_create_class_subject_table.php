@@ -19,8 +19,8 @@ class CreateClassSubjectTable extends Migration
             $table->integer('subject_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            // $table->foreign('class_id')->references('id')->on('classes');
+            // $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateClassSubjectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_subjects');
+        Schema::dropIfExists('class_subject');
     }
 }
