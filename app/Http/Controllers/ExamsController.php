@@ -24,7 +24,7 @@ class ExamsController extends Controller
         //
         $exams = Exam::all();
 
-        return view('pages.Exams.index',compact('exams'));
+        return view('exams.index',compact('exams'));
 
 
     }
@@ -38,7 +38,7 @@ class ExamsController extends Controller
     {
         //
 
-        return view('pages.exams.create');
+        return view('exams.create');
     }
 
     /**
@@ -97,7 +97,7 @@ class ExamsController extends Controller
     {
         //
 
-        return view('pages.exams.show',compact('exam'));
+        return view('exams.show',compact('exam'));
     }
 
     /**
@@ -110,7 +110,7 @@ class ExamsController extends Controller
     {
         //
 
-        return view('pages.exams.edit',compact('exam'));
+        return view('exams.edit',compact('exam'));
     }
 
     /**
@@ -137,7 +137,7 @@ class ExamsController extends Controller
 
         if ($exam->delete()) {
             
-            return view('pages.exams.index')->with('success','Exam deleted');
+            return view('exams.index')->with('success','Exam deleted');
         }
 
         return back()->withInput();
