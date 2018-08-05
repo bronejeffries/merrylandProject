@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('dashboard.index');
 });
@@ -18,3 +19,6 @@ Route::get('/', function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::resource('teachers', 'TeachersController');
+Route::resource('subjects','SubjectsController');
+Route::resource('students', 'StudentsController');
