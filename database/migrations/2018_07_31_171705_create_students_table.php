@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
 
             $table->string('regiNo',20);
             $table->string('stdNo',20);
-            $table->integer('class_id')->unsigned();
+            $table->integer('sclass_id')->unsigned();
             $table->integer('level')->unsigned();
             $table->integer('mentor_id')->unsigned();
             $table->string('stream',10);
@@ -49,11 +49,11 @@ class CreateStudentsTable extends Migration
 
             //define foreign keys
 
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->foreign('sclass_id')->references('id')->on('sclasses');
             $table->foreign('level')->references('id')->on('student_groups');
             $table->foreign('mentor_id')->references('id')->on('teachers');
 
-            
+
             $table->timestamps();
         });
 
