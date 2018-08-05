@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-      <li class="nav-item"> <a class="nav-link" href="index.html"> <i class="mdi mdi-compass-outline menu-icon"></i> <span class="menu-title">Dashboard</span> </a> </li>
+      <li class="nav-item"> <a class="nav-link" href="{{route('home')}}"> <i class="mdi mdi-compass-outline menu-icon"></i> <span class="menu-title">Dashboard</span> </a> </li>
       <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiBasicSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-buffer menu-icon"></i> <span class="menu-title">Class</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
         <div class="collapse" id="uiBasicSubmenu">
           <ul class="nav flex-column sub-menu">
@@ -12,16 +12,25 @@
       <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiAdvancedSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-cube-outline menu-icon"></i> <span class="menu-title">Subjects</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
         <div class="collapse" id="uiAdvancedSubmenu">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dragula.html">Add Subject</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/clipboard.html">View List</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('subjects.create')}}">Add Subject</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('subjects.index')}}">View List</a></li>
           </ul>
         </div>
       </li>
+
       <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#formsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-clipboard-outline menu-icon"></i> <span class="menu-title">Students</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
         <div class="collapse" id="formsSubmenu">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Add Student</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('students.create')}}">Add Student</a></li>
             <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">View List</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiExamSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-clipboard-outline menu-icon"></i> <span class="menu-title">Manage Marks</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+        <div class="collapse" id="uiExamSubmenu">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('exams.create')}}">Add Subject Marks</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('exams.index')}}">View Subject Performances</a></li>
           </ul>
         </div>
       </li>
@@ -70,7 +79,7 @@
           </ul>
         </div>
       </li>
-     
+
       </li>
       <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#EditorSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-code-brackets menu-icon"></i> <span class="menu-title">Editors</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
         <div class="collapse" id="EditorSubmenu">
