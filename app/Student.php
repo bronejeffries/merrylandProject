@@ -35,7 +35,7 @@ class Student extends Model
                             'isActive'];
 
     public function sclass(){
-    	return $this->belongsTo(SClass::class);
+    	return $this->belongsTo(Sclass::class);
     }
 
     public function subjects(){
