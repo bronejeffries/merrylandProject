@@ -17,8 +17,8 @@ class Exam extends Model
 
     }
 
-    public function class(){
-        return $this->belongsTo('App\Class_');
+    public function sclass(){
+        return $this->belongsTo('App\Sclass_');
     }
 
     public function academicyear(){

@@ -35,11 +35,11 @@ class Student extends Model
                             'isActive'];
 
     public function sclass(){
-    	return $this->belongsTo(SClass::class);
+    	return $this->belongsTo(Sclass::class);
     }
 
     public function subjects(){
-    	return $this->hasMany(Subject::class);
+    	return $this->belongsToMany(Subject::class);
     }
 
     public function level(){

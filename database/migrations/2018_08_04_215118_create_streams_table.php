@@ -4,32 +4,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTeachersTable extends Migration
+class CreateStreamsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('streams', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',250);
-            $table->integer('role_id')->unsigned();
+            $table->string('name');
+            $table->integer('number_of_students');
             $table->timestamps();
+            $table->integer('sclass_id')->unsigned();
 
-            // $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreignkey('sclass_id')->references('id')->on('sclasses');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('streams');
     }
 }

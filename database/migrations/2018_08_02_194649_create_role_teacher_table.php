@@ -18,8 +18,8 @@ class CreateRoleTeacherTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
 
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            // $table->foreign('role_id')->references('id')->on('roles');
+            // $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });
     }
