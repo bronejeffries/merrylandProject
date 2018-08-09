@@ -17,9 +17,9 @@ class CreateExamsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
 
-            $table->integer('class_id')->unsigned();
+            $table->integer('sclass_id')->unsigned();
 
-            
+
             // $table->string('exam',50);
 
             $table->integer('subject_id')->unsigned();
@@ -31,7 +31,7 @@ class CreateExamsTable extends Migration
             $table->integer('final')->default(0);
             $table->integer('total')->default(0);
             $table->string('grade');
-            
+
             //term details
 
             $table->string('term_id');
@@ -43,14 +43,23 @@ class CreateExamsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('student_id')->references('id')->on('students');
+            // $table->foreign('student_id')->references('id')->on('students');
 
-            $table->foreign('class_id')->references('id')->on('classes');
+<<<<<<< HEAD
+            // $table->foreign('class_id')->references('id')->on('classes');
+            // $table->foreign('term_id')->references('id')->on('terms');
+            // $table->foreign('academic_year_id')->references('id')->on('academic_years');
+            
+            // $table->foreign('subject_id')->references('id')->on('subjects');
+            
+=======
+            $table->foreign('sclass_id')->references('id')->on('sclasses');
             $table->foreign('term_id')->references('id')->on('terms');
             $table->foreign('academic_year_id')->references('id')->on('academic_years');
-            
+
             $table->foreign('subject_id')->references('id')->on('subjects');
-            
+
+>>>>>>> 209ed3ae01a3bd62d240c71cf01e5e70acfeb616
 
         });
     }

@@ -29,7 +29,7 @@ class CreateSubjectsTable extends Migration
             // $table->integer('teacher_id')->unsigned();
 
 
-            $table->foreign('available_for_stdgroup_id')->references('id')->on('student_groups');
+            // $table->foreign('available_for_stdgroup_id')->references('id')->on('student_groups');
             
             //$table->foreign('teacher_id')->references('id')->on('teachers');
 
