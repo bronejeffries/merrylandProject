@@ -9,31 +9,6 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiAdvancedSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-cube-outline menu-icon"></i> <span class="menu-title">Subjects</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
-        <div class="collapse" id="uiAdvancedSubmenu">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('subjects.create')}}">Add Subject</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('subjects.index')}}">View List</a></li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#formsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-clipboard-outline menu-icon"></i> <span class="menu-title">Students</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
-        <div class="collapse" id="formsSubmenu">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="{{route('students.create')}}">Add Student</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">View List</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiExamSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-clipboard-outline menu-icon"></i> <span class="menu-title">Manage Marks</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
-        <div class="collapse" id="uiExamSubmenu">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('exams.create')}}">Add Subject Marks</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('exams.index')}}">View Subject Performances</a></li>
-          </ul>
-        </div>
-      </li>
       <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#tablesSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-table-large menu-icon"></i> <span class="menu-title">Tables</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
         <div class="collapse" id="tablesSubmenu">
           <ul class="nav flex-column sub-menu">
