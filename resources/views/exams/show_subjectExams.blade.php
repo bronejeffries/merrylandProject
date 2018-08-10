@@ -39,8 +39,20 @@
                     <td class="p-3"><div class="d-flex align-items-center">3</div></td>
                     <td class="p-3"><div class="d-flex align-items-center">2019</div></td>
                     <td class="p-3">
-                    <a class="btn btn-sm btn-outline-success" href="{{ route('exams.edit',1) }}">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger" href="{{ route('exams.destroy',1) }}">Delete</a>
+                    <a class="btn btn-sm btn-outline-success" href="{{ route('exams.edit',1)}}">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger" href="#"
+                  onclick="
+                  var result = confirm('Are you sure you wish to delete this Exam?');
+                      if( result ){
+                              event.preventDefault();
+                              document.getElementById('delete-form').submit();
+                      }
+                          "> Delete</a>
+                      <form id="delete-form" action="{{ route('exams.destroy',1) }}"
+                method="POST" style="display: none;">
+                        <input type="hidden" name="_method" value="delete">
+                        {{ csrf_field() }}
+              </form>
                     </td>
                   </tr>
                 </tbody>
