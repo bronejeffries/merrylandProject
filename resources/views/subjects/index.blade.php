@@ -31,10 +31,10 @@
                     <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                     <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                     <td class="p-2">
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-success" name="delete">Edit</button>
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-danger" name="delete">Delete</button>
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-info" name="delete">Details</button>
-                    </td>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-success" href="{{ route('subjects.edit',1) }}">Edit</a>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-info" href="{{ route('subjects.show',1)}}">Details</a>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-danger" href="{{ route('subjects.destroy',1)}}">Delete</a>
+                                          </td>
                   </tr>
 
                 </tbody>
