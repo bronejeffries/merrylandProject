@@ -100,6 +100,21 @@ class ExamsController extends Controller
         return view('exams.show',compact('exam'));
     }
 
+
+    
+    /**
+     * Display the exams of specified resource.
+     *
+     * @param  \App\Subject $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function showSubjectExams(Subject $subject)
+    {
+        //
+      $subject_exams = $subject->exams;
+      return view('exams.show_subjectExams',compact('subject_exams'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
