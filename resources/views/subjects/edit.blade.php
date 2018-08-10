@@ -4,9 +4,9 @@
 <div class=" col-lg-12 col-lg-offset-3 ">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Create A Subject</h4>
+        <h4 class="card-title">Edit A Subject</h4>
         <div class="">
-          <form class="" method="post" action="{{route('subjects.create')}}">
+          <form class="" method="post" action="{{route('subjects.update')}}">
             {{ csrf_field() }}
             <p class="card-description">
               Subject information
@@ -64,11 +64,6 @@
             <div class="col-sm-9 col-md-9 col-xs-9">
               <div class="form-group">
               <input class="btn btn-sm btn-outline-success" type="submit" value="Add Subject">
-            </div>
-            </div>
-            <div class="col-sm-3 pull-right">
-              <div class="form-group">
-              <button class="btn btn-sm btn-outline-success" type="submit">Import from/as Excel</button>
             </div>
             </div>
           </div>
