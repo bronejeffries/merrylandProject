@@ -18,7 +18,7 @@ class CreateStreamsTable extends Migration
             $table->timestamps();
             $table->integer('sclass_id')->unsigned();
 
-            $table->foreignkey('sclass_id')->references('id')->on('sclasses');
+            // $table->foreignkey('sclass_id')->references('id')->on('sclasses');
         });
     }
 

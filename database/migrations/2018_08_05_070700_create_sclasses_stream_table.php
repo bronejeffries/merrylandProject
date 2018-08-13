@@ -17,10 +17,10 @@ class CreateSclassesStreamTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('sclass_id')->unsigned();
-            $table->integer('stream_id')->unsigned();
+            // $table->integer('stream_id')->unsigned();
 
-            $table->foreignkey('sclass_id')->references->('id')->on('sclasses')->onDelete('cascade');
-            $table->foreignkey('stream_id')->references->('id')->on('streams')->onDelete('cascade');
+            // $table->foreignkey('sclass_id')->references->('id')->on('sclasses')->onDelete('cascade');
+            // $table->foreignkey('stream_id')->references->('id')->on('streams')->onDelete('cascade');
 
         });
     }

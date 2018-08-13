@@ -1,7 +1,7 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
 
-        <li class="nav-item"> <a class="nav-link" href="{{route('home')}}"> <i class="mdi mdi-compass-outline menu-icon"></i> <span class="menu-title">Dashboard</span> </a> </li>
+        <li class="nav-item"> <a class="nav-link" href="/"> <i class="mdi mdi-compass-outline menu-icon"></i> <span class="menu-title">Dashboard</span> </a> </li>
         <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiBasicSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-buffer menu-icon"></i> <span class="menu-title">Class</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
           <div class="collapse" id="uiBasicSubmenu">
             <ul class="nav flex-column sub-menu">

@@ -16,12 +16,8 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('regiNo',20);
-<<<<<<< HEAD
-            $table->integer('class_id')->unsigned();
-=======
             $table->string('stdNo',20);
             $table->integer('sclass_id')->unsigned();
->>>>>>> 209ed3ae01a3bd62d240c71cf01e5e70acfeb616
             $table->integer('level')->unsigned();
             $table->integer('mentor_id')->unsigned();
             $table->string('stream',10);
@@ -51,15 +47,9 @@ class CreateStudentsTable extends Migration
 
             // //define foreign keys
 
-<<<<<<< HEAD
-            // $table->foreign('class_id')->references('id')->on('classes');
-            // $table->foreign('level')->references('id')->on('student_groups');
-            // $table->foreign('mentor_id')->references('id')->on('teachers');
-=======
             $table->foreign('sclass_id')->references('id')->on('sclasses');
             $table->foreign('level')->references('id')->on('student_groups');
             $table->foreign('mentor_id')->references('id')->on('teachers');
->>>>>>> 209ed3ae01a3bd62d240c71cf01e5e70acfeb616
 
 
             $table->timestamps();
