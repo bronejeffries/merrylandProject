@@ -31,10 +31,23 @@
                     <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                     <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                     <td class="p-2">
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-success" name="delete">Edit</button>
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-danger" name="delete">Delete</button>
-                      <button type="submit" class=" badge badge-pill btn btn-sm btn-outline-info" name="delete">Details</button>
-                    </td>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-success" href="{{ route('subjects.edit',1) }}">Edit</a>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-info" href="{{ route('subjects.show',1)}}">Details</a>
+                      <a class=" badge badge-pill btn btn-sm btn-outline-danger" 
+                      href="#"
+                  onclick="
+                  var result = confirm('Are you sure you wish to delete this Subject?');
+                      if( result ){
+                              event.preventDefault();
+                              document.getElementById('delete-form').submit();
+                      }
+                          "> Delete</a>
+                      <form id="delete-form" action="{{ route('subjects.destroy',1) }}"
+                method="POST" style="display: none;">
+                        <input type="hidden" name="_method" value="delete">
+                        {{ csrf_field() }}
+              </form>
+                                          </td>
                   </tr>
 
                 </tbody>

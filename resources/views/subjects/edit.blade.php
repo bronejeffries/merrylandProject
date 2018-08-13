@@ -6,8 +6,9 @@
       <div class="card-body">
         <h4 class="card-title">Edit A Subject</h4>
         <div class="">
-          <form class="" method="post" action="{{route('subjects.update')}}">
+          <form class="" method="post" action="{{route('subjects.update',[1])}}">
             {{ csrf_field() }}
+            <input type="hidden" name="_method" value="put">
             <p class="card-description">
               Subject information
             </p>
@@ -63,7 +64,7 @@
             <div class="row">
             <div class="col-sm-9 col-md-9 col-xs-9">
               <div class="form-group">
-              <input class="btn btn-sm btn-outline-success" type="submit" value="Add Subject">
+              <input class="btn btn-sm btn-outline-success" type="submit" value="Update Subject">
             </div>
             </div>
           </div>

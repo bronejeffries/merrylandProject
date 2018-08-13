@@ -77,13 +77,12 @@ class ExamsController extends Controller
 
             if($exam){
 
-                return back();
-                // return redirect()->route('exams.', ['company'=> $company->id])
-                // ->with('success' , 'Company created successfully');
+                return redirect()->route('exams.show', ['exam'=> $exam->id])
+                ->with('success' , 'Exam created successfully');
             }
         
-            return back()->withInput();
-            // ->with('errors', 'Error creating new company');
+            return back()->withInput()
+            ->with('errors', 'Error creating exam');
 
     }
 
@@ -98,6 +97,21 @@ class ExamsController extends Controller
         //
 
         return view('exams.show',compact('exam'));
+    }
+
+
+    
+    /**
+     * Display the exams of specified resource.
+     *
+     * @param  \App\Subject $subject
+     * @return \Illuminate\Http\Response
+     */
+    public function showSubjectExams(Subject $subject)
+    {
+        //
+      $subject_exams = $subject->exams;
+      return view('exams.show_subjectExams',compact('subject_exams'));
     }
 
     /**
@@ -123,6 +137,21 @@ class ExamsController extends Controller
     public function update(Request $request, Exam $exam)
     {
         //
+
+
+         //save data
+
+      $examUpdate = Exam::where('id', $exam->id)
+                                ->update([
+                                        $request->input('exam_type')=>$request->input('marks'), 
+                                ]);
+
+      if($examUpdate){
+          return redirect()->route('exams.show', ['exam'=> $exam->id])
+          ->with('success' , 'exam updated successfully');
+      }
+      //redirect
+      return back()->withInput();
     }
 
     /**
