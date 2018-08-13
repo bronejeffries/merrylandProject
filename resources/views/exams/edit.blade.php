@@ -5,7 +5,9 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Add Subject Marks</h4>
-        <form class="form-sample" action="{{route('exams.update',1)}}" method="post">
+        <form class="form-sample" action="{{route('exams.update',[1])}}" method="post">
+         
+           <input type="hidden" name="_method" value="put">
           {{ csrf_field() }}
           <p class="card-description text-success">
             Academic year informaton

@@ -6,8 +6,9 @@
       <div class="card-body">
         <h4 class="card-title">Edit A Subject</h4>
         <div class="">
-          <form class="" method="post" action="{{route('subjects.update',1)}}">
+          <form class="" method="post" action="{{route('subjects.update',[1])}}">
             {{ csrf_field() }}
+            <input type="hidden" name="_method" value="put">
             <p class="card-description">
               Subject information
             </p>
