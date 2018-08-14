@@ -17,8 +17,7 @@ class CreateSclassesStreamTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('sclass_id')->unsigned();
-            $table->integer('stream_id')->unsigned();
-
+            // $table->integer('stream_id')->unsigned();
             // $table->foreign('sclass_id')->references('id')->on('sclasses')->onDelete('cascade');
             // $table->foreign('stream_id')->references('id')->on('streams')->onDelete('cascade');
 

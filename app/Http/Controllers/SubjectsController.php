@@ -22,23 +22,24 @@ class SubjectsController extends Controller
 
 
 
+
     public function index()
     {
-        //
-       //  if(Auth::user()->role=='admin')
-       // {
-       //         $subjets = Subject::all();
-       //
-       //         return view('subjects.index',['subjects'=>$subjects]);}
-        // $teacher = Teacher::where('id',Auth::user()->id)->first();
+    //     if(Auth::user()->role=='admin')
+    //    {     
+    //            $subjets = Subject::all();
+       
+    //            return view('subjects.index',['subjects'=>$subjects]);}
+    //     $teacher = Teacher::where('id',Auth::user()->id)->first();
+      
+    //     if ($teacher) {
+           
+    //        return view('subjects.index',['subjects'=>$teacher->subjects]); 
+    //     }
+        $subjects = Subject::all();
+        return view('subjects.index', compact('subjects')); 
 
-        // if ($teacher) {
-
-           // return view('subjects.index',['subjects'=>$teacher->subjects]);
-           return view('subjects.index',['subjects'=>Subject::all()]);
-
-        }
-    // }
+    }
 
     /**
      * Show the form for creating a new resource.

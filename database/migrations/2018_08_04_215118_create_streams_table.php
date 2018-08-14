@@ -19,6 +19,7 @@ class CreateStreamsTable extends Migration
             $table->integer('sclass_id')->unsigned();
 
             // $table->foreign('sclass_id')->references('id')->on('sclasses');
+
         });
     }
 

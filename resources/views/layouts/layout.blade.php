@@ -5,6 +5,11 @@
 <head>
   @include('partials.head')
   <link rel="shortcut icon" href="/images/favicon.jpg" />
+  <style>
+  .hide{
+    display: none;
+  }
+  </style>
 </head>
 
 <body>

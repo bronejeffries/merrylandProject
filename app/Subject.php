@@ -16,9 +16,9 @@ class Subject extends Model
     	return $this->belongsToMany(Student::class);
     }
 
-    public function Sclass(){
+    public function stuclasses(){
 
-    	return $this->belongsToMany('App\Sclass');
+    	return $this->belongsToMany(StuClass::class);
     }
 
     public function exams(){

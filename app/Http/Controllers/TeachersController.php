@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use Illuminate\Http\Request;
 use App\Subject;
+use Session;
 class TeachersController extends Controller
 {
     /**
@@ -37,10 +38,39 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        Teacher::create($request->validate([
-           
-        ]));
+        $this->validate($request, [
+            'first_name'=>'required',
+            'middle_name'=>'required',
+            'last_name'=>'required',
+            'id_no'=>'required',
+            'gender'=>'required',
+            'date_of_birth'=>'required',
+            'religion'=>'required',
+            'photo'=>'required|mimes:jpeg,bmp,png,jpg,svg',
+            'others'=>'nullable',
+            'village'=>'required',
+            'subjects' =>'required',
+            'sub-county'=>'required',
+            'county'=>'required',
+            'country'=>'required'
+        ]);
+        $photo = $request->file('photo');
+       $teacher =  Teacher::create([
+            'first_name'=>$request->first_name,
+            'middle_name'=>$request->middle_name,
+            'last_name'=>$request->last_name,
+            'id_no'=>$request->id_no,
+            'gender'=>$request->gender,
+            'date_of_birth'=>$request->date_of_birth,
+            'religion'=>$request->religion,
+            'photo'=>$photo->store('public/storage'),
+            'others'=>$request->others,
+            'village'=>$request->village,
+            'sub_county'=>$request->sub_country,
+            'county'=>$request->county,
+            'country'=>$request->country
+        ]);
+        $teacher->subjects()->attach($request->subjects);
         Session::flash('success', 'You have successfully created a teacher');
         return redirect()->route('teachers.index');
     }

@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('home');
 // });
 Route::resource('teachers', 'TeachersController');
 Route::resource('subjects','SubjectsController');

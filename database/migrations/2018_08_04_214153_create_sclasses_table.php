@@ -17,7 +17,8 @@ class CreateSclassesTable extends Migration
             $table->timestamps();
             $table->integer('academic_year_id')->unsigned();
 
-            // $table->foreign('academic_year_id')->reference('id')->on('academic_years');
+
+            // $table->foreign('academic_year_id')->reference('id')->on('academic_years');r
         });
     }
 
