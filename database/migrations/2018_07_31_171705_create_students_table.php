@@ -21,7 +21,6 @@ class CreateStudentsTable extends Migration
             $table->integer('mentor_id')->unsigned();
             $table->string('stream',10);
             $table->boolean('shift');
-
             $table->string('firstName',60);
             $table->string('middleName',60)->nullable();
             $table->string('lastName',60);

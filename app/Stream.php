@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stream extends Model
 {
-  public function sclass(){
-    return $this->belongsToMany(Sclass::class);
+  public function sclass_stream(){
+    return $this->hasMany(SclassStream::class);
   }
-  
+
 }

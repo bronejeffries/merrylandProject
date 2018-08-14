@@ -4,20 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Stuclass extends Model
+class Sclass extends Model
 {
 
-  protected $table = 'sclasses';
+//  protected $table = 'sclasses';
   public function academicyear(){
     return $this->belongsTo(AcademicYear::class);
   }
 
-  public function stream(){
-    return $this->belongsToMany(Stream::class);
-  }
-
-  public function student(){
-    return $this->hasToMany(Student::class);
+  public function sclass_stream(){
+    return $this->hasMany(SclassStream::class);
   }
 
   public function subject(){

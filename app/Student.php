@@ -34,8 +34,8 @@ class Student extends Model
                             'parmanentAddress',
                             'isActive'];
 
-    public function stuclass(){
-    	return $this->belongsTo(Stuclass::class);
+    public function sclass_stream(){
+    	return $this->hasOne(Stuclass::class);
     }
 
     public function subjects(){
