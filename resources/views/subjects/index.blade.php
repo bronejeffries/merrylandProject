@@ -31,7 +31,7 @@
                         <div class="d-flex align-items-center">
                         {{$subject->code}} </div>
                       </td>
-                      <td class="p-2">{{$subject->studentgroup->name}}</td>
+                      <td class="p-2">{{$subject->name}}</td>
                       <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                       <td class="p-2"><div class="d-flex align-items-center">12</div></td>
                       <td class="p-2">

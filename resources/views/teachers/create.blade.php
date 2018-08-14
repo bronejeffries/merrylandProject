@@ -5,7 +5,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Create A Teacher</h4>
-        {{-- {{ var_dump($errors) }} --}}
+        {{ var_dump($errors) }}
         <form class="form-sample" method="post" action="{{ route('teachers.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="row">
@@ -93,10 +93,10 @@
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label ">Subjects</label>
                       <div class="col-sm-9">
-                          <select name="subject[]" class="form-control " id="" multiple>
+                          <select name="subjects[]" class="form-control " id="" multiple>
                               <option value="">select...</option>
                               @foreach($subjects as $subject)
-                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                <option value="{{ $subject->id }}">{{ $subject->code }}</option>
                                 @endforeach
                             </select>
                       </div>
@@ -133,7 +133,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Sub-County</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="sub-county" />
+                  <input type="text" class="form-control" name="sub_county" />
                 </div>
               </div>
             </div>
