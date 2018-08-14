@@ -50,7 +50,7 @@ class TeachersController extends Controller
             'others'=>'nullable',
             'village'=>'required',
             'subjects' =>'required',
-            'sub-county'=>'required',
+            'sub_county'=>'required',
             'county'=>'required',
             'country'=>'required'
         ]);

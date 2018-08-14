@@ -25,7 +25,7 @@ class CreateTeachersTable extends Migration
             $table->string('photo');
             $table->string('others')->nullable();
             $table->string('village');
-            $table->string('sub-county');
+            $table->string('sub_county');
             $table->string('county');
             $table->string('country');
             $table->integer('role_id')->unsigned();
