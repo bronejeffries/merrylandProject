@@ -15,28 +15,30 @@ class SubjectsController extends Controller
      * @return \Illuminate\Http\Response
     */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
 
     public function index()
     {
         //
-        if(Auth::user()->role=='admin')
-       {     
-               $subjets = Subject::all();
-       
-               return view('subjects.index',['subjects'=>$subjects]);}
-        $teacher = Teacher::where('id',Auth::user()->id)->first();
-      
-        if ($teacher) {
-           
-           return view('subjects.index',['subjects'=>$teacher->subjects]); 
+       //  if(Auth::user()->role=='admin')
+       // {
+       //         $subjets = Subject::all();
+       //
+       //         return view('subjects.index',['subjects'=>$subjects]);}
+        // $teacher = Teacher::where('id',Auth::user()->id)->first();
+
+        // if ($teacher) {
+
+           // return view('subjects.index',['subjects'=>$teacher->subjects]);
+           return view('subjects.index',['subjects'=>Subject::all()]);
+
         }
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -46,7 +48,6 @@ class SubjectsController extends Controller
     public function create()
     {
         //
-
         return view('subjects.create');
     }
 
@@ -58,20 +59,21 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-         $subject = Subject::create( 
+        
+     
+         $subject = Subject::create(
             ['code'=>$request->input('code'),
             'name'=>$request->input('name'),
-             'is_core'=>$request->input('is_core'),
-              'available_for_stdgroup_id'=>$request->input('student_group')
+             'is_core'=>$request->is_core,
+              'available_for_stdgroup_id'=>$request->input('available_for_stdgroup_id')
               ]);
 
             if($subject){
-                return redirect()->route('subject.index')
+                return redirect()->route('subjects.index')
                 ->with('success' , 'Subject created successfully');
             }
-            return back()->withInput();
+            return back()->withInput()
+            ->with('error' , 'Subject Couldn\'t be created');
 
 
     }
@@ -97,7 +99,7 @@ class SubjectsController extends Controller
     public function edit(Subject $subject)
     {
         //
-        return view('subject.edit', ['subject'=>$subject]);
+        return view('subjects.edit',Compact('subject'));
     }
 
     /**
@@ -116,7 +118,7 @@ class SubjectsController extends Controller
                                         'code'=>$request->input('code'),
                                         'name'=>$request->input('name'),
                                         'is_core'=>$request->input('is_core'),
-                                        'available_for_stdgroup_id'=>$request->input('student_group')
+                                        'available_for_stdgroup_id'=>$request->input('available_for_stdgroup_id')
                                 ]);
 
       if($subjectUpdate){
@@ -124,8 +126,8 @@ class SubjectsController extends Controller
           ->with('success' , 'Subject updated successfully');
       }
       //redirect
-      return back()->withInput();
-
+      return back()->withInput()
+      ->with('error' , 'Error updating subject');
 
     }
 
@@ -139,9 +141,8 @@ class SubjectsController extends Controller
     {
         //
 
-         
         if($subject->delete()){
-            
+
             //redirect
             return redirect()->route('subjects.index')
             ->with('success' , 'Subject deleted successfully');

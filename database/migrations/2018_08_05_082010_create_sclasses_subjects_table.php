@@ -19,8 +19,8 @@ class CreateSclassesSubjectsTable extends Migration
           $table->integer('subject_id')->unsigned();
           $table->timestamps();
 
-          $table->foreign('sclass_id')->references('id')->on('sclasses');
-          $table->foreign('subject_id')->references('id')->on('subjects');
+          // $table->foreign('sclass_id')->references('id')->on('sclasses');
+          // $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
 

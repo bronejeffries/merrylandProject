@@ -1,3 +1,5 @@
+
+
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
 
@@ -14,6 +16,7 @@
 
       <li class="nav-item"> <a class="nav-link" href="{{ route('teachers.index') }}"> <i class="mdi mdi-calendar-check menu-icon"></i> <span class="menu-title">Teacher</span> </a> </li>
         <li class="nav-item"> <a class="nav-link" href="{{ route('students.index') }}"> <i class="mdi mdi-calendar-check menu-icon"></i> <span class="menu-title">Student</span> </a> </li>
+        <li class="nav-item"> <a class="nav-link" href="{{ route('subjects.index') }}"> <i class="mdi mdi-content-copy menu-icon"></i> <span class="menu-title">Subjects</span> </a> </li>
         <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#tablesSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-table-large menu-icon"></i> <span class="menu-title">Academics</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
 
           <div class="collapse" id="tablesSubmenu">
@@ -26,15 +29,7 @@
             </ul>
           </div>
         </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#subjectSubmenu" aria-expanded="true" aria-controls="collapseExample"><i class="mdi mdi-content-copy menu-icon"></i><span class="menu-title">Subject</span> <i class="mdi mdi-menu-down menu-arrow"></i></a>
-          <div class="collapse" id="subjectSubmenu">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="{{ route('subjects.create') }}">Add Subject</a></li>
-               <li class="nav-item"> <a class="nav-link" href="{{ route('subjects.index') }}">View Subjects List</a></li>
 
-            </ul>
-        </div>
-        </li>
         <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#layoutsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-arrow-expand-all menu-icon"></i> <span class="menu-title">Attendance</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
           <div class="collapse" id="layoutsSubmenu">
             <ul class="nav flex-column sub-menu">

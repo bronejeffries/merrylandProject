@@ -8,7 +8,8 @@ class Exam extends Model
 {
     //
 
-    protected $fillable = ['student_id','class_id','subject_id','test','mid','final','total','grade','term_id','academic_year_id'];
+       protected $fillable = ['student_id','sclass_id','subject_id','term_id','test','mid','final','grade','academic_year_id'];
+
 
     public function subject(){
 

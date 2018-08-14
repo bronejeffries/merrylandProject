@@ -6,7 +6,7 @@
       <div class="card-body">
         <h4 class="card-title">Edit A Subject</h4>
         <div class="">
-          <form class="" method="post" action="{{route('subjects.update',[1])}}">
+          <form class="" method="post" action="{{route('subjects.update',[$subject->id])}}">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="put">
             <p class="card-description">
@@ -17,7 +17,7 @@
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Subject Code</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="code"/>
+                    <input type="text" class="form-control" value="{{$subject->code}}" name="code"/>
                   </div>
                 </div>
               </div>
@@ -27,7 +27,7 @@
                 <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="name" />
+                    <input type="text" class="form-control" value="{{$subject->name}}" name="name" />
                   </div>
                 </div>
               </div>
@@ -39,9 +39,9 @@
                   <label class="col-sm-4 col-form-label">Available For</label>
                   <div class="col-sm-9">
                     <select class="form-control" name="available_for_stdgroup_id">
-                      <option value="select_level">select level...</option>
-                      <option value="Olevel">O'Level</option>
-                      <option value="Alevel">A'level</option>
+                      <option value="{{$subject->studentgroup->id}}">{{$subject->studentgroup->name}}</option>
+                      <option value="1">O'Level</option>
+                      <option value="2">A'level</option>
                     </select>
                   </div>
                 </div>
@@ -52,11 +52,11 @@
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label"> Specify If Core Subject</label>
                   <div class="col-sm-4">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="is_core">
-                      </label>
-                    </div>
+                    <select class="form-control" name="is_core">
+                      <option value="select_level">specify category</option>
+                      <option value="1">Core</option>
+                      <option value="0">Not Core</option>
+                    </select>
                   </div>
                 </div>
               </div>

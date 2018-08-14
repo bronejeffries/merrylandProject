@@ -19,8 +19,8 @@ class CreateAcademicYearsTable extends Migration
             $table->timestamps();
             $table->integer('term_id')->unsigned();
 
-            // $table->foreignkey('term_id')->references('id')->on('terms');
-            
+            // $table->foreign('term_id')->references('id')->on('terms');
+
         });
     }
 
