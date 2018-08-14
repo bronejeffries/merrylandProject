@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sclass extends Model
+class Stuclass extends Model
 {
+
+  protected $table = 'sclasses';
   public function academicyear(){
     return $this->belongsTo(AcademicYear::class);
   }

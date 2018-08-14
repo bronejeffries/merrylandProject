@@ -5,7 +5,8 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Create A Student</h4>
-        <form class="form-sample" method="post" action="{{ route('students.store') }}">
+        {{ var_dump($errors) }}
+        <form class="form-sample" method="post" action="{{ route('students.store') }}" enctype="multipart/form-data">
           @csrf
           <p class="card-description">
             Personal info
@@ -15,7 +16,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">First Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="first_name"/>
+                  <input type="text" class="form-control" name="firstName"/>
                 </div>
               </div>
             </div>
@@ -23,7 +24,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Middle Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="middle_name" />
+                  <input type="text" class="form-control" name="middleName" />
                 </div>
               </div>
             </div>
@@ -31,7 +32,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Last Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="last_name"/>
+                    <input type="text" class="form-control" name="lastName"/>
                   </div>
                 </div>
               </div>
@@ -41,7 +42,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">RegNo:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="reg_no"/>
+                      <input type="text" class="form-control" name="regiNo"/>
                     </div>
                   </div>
                 </div>
@@ -74,9 +75,9 @@
                   <div class="col-sm-9">
                     <select class="form-control" name="class" id="">
                       <option value="">Select Class</option>
-                      {{-- @foreach ($classes as $class)
+                      @foreach ($classes as $class)
                           <option value="{{ $class->id }}">{{ $class->name }}</option>
-                      @endforeach --}}
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -87,9 +88,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" name="stream" id="">
                             <option value="">Select Stream</option>
-                            {{-- @foreach ($streams as $stream)
+                            @foreach ($streams as $stream)
                                 <option value="{{ $stream->id }}">{{ $stream->name }}</option>
-                            @endforeach --}}
+                            @endforeach
                           </select>
                       </div>
                     </div>
@@ -113,7 +114,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" name="date_of_birth"/>
+                  <input type="date" class="form-control" name="dob"/>
                 </div>
               </div>
             </div>
@@ -168,7 +169,15 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Co-Activity</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="co-activity" placeholder="co-activity"/>
+                      <input type="text" class="form-control" name="extraActivity" placeholder="co-activity"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Nationality</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="nationality" placeholder="nationality"/>
                     </div>
                   </div>
                 </div>
@@ -190,7 +199,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Sub-County</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="sub-county" />
+                  <input type="text" class="form-control" name="sub_county" />
                 </div>
               </div>
             </div>
@@ -208,7 +217,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Country</label>
                 <div class="col-sm-9">
-                  <select class="form-control">
+                  <select class="form-control" name="country">
                     <option>Choose ...</option>
                     <option>Uganda</option>
                     <option>Italy</option>
@@ -219,10 +228,11 @@
               </div>
             </div>
           </div>
-          <p class="card-description">
-                Parent Info<b><i class="text-primary">(if a student has parents)</i></b>
+          <p class="card-description parent_info">
+                <span class="mdi mdi-menu-right"></span>Parent Info<b><i class="text-primary">(if a student has parents)</i></b>
               </p>
               <hr/>
+              <div class="parent hide">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
@@ -246,7 +256,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Mother's Name</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" name="MothersName" />
+                          <input type="text" class="form-control" name="mothersName" />
                         </div>
                       </div>
                     </div>
@@ -259,16 +269,17 @@
                       </div>
                     </div>
                   </div>
-                  <p class="card-description">
-                       Guadian Info<b><i class="text-primary">(if a student stays with a guardian)</i></b>
+              </div>
+                  <p class="card-description guardian_info">
+                    <span class="mdi mdi-menu-right"></span> Guadian Info<b><i class="text-primary">(if a student stays with a guardian)</i></b>
                       </p>
                       <hr/>
-                      <div class="row">
+                      <div class="row guardian hide">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Guardian's Name</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" name="localGuardianName" />
+                              <input type="text" class="form-control" name="localGuardian" />
                             </div>
                           </div>
                         </div>
@@ -276,21 +287,22 @@
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Guardians Phone No</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" name="fatherCellNo" />
+                              <input type="text" class="form-control" name="localGuardianCell" />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <p class="card-description">
-                            Organisation's Info<b><i class="text-primary">(if a student is sponsored by an organisation)</i></b>
+                      <p class="card-description organisation_info">
+                        <span class="mdi mdi-menu-right"></span>Organisation's Info<b><i class="text-primary">(if a student is sponsored by an organisation)</i></b>
                            </p>
                            <hr/>
+                           <div class="organisation hide">
                            <div class="row">
                              <div class="col-md-6">
                                <div class="form-group row">
                                  <label class="col-sm-3 col-form-label">Organisation's Name</label>
                                  <div class="col-sm-9">
-                                   <input type="text" class="form-control" name="localGuardianName" />
+                                   <input type="text" class="form-control" name="org_name" />
                                  </div>
                                </div>
                              </div>
@@ -329,6 +341,7 @@
                                         </div>
                                       </div>
                               </div>
+                           </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-outline-primary"> Add Student</button>
                 </div>
@@ -338,4 +351,41 @@
   </div>
 </div>
 
+@endSection
+@section('footer_scripts')
+<script>
+var organization=document.querySelector('.organisation');
+var parent=document.querySelector('.parent');
+
+var guardian=document.querySelector('.guardian');
+
+// document.querySelector('.guardian').style.display = 'none';
+// document.querySelector('.parent').style.display = 'none';
+
+
+const organisation_info = document.querySelector('.organisation_info');
+const parent_info = document.querySelector('.parent_info');
+const guardian_info = document.querySelector('.guardian_info');
+function toggle_classOrganisation(){
+  // console.log('you have clicked me')
+  organization.classList.toggle("hide");
+  
+}
+function toggle_classParent(){
+  // console.log('you have clicked me')
+  parent.classList.toggle("hide");
+  
+}
+function toggle_classGuardian(){
+  // console.log('you have clicked me')
+  guardian.classList.toggle("hide");
+  
+}
+organisation_info.addEventListener('click', toggle_classOrganisation);
+parent_info.addEventListener('click', toggle_classParent);
+guardian_info.addEventListener('click', toggle_classGuardian);
+
+
+// console.log(organisation);
+</script>
 @endSection

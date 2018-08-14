@@ -17,7 +17,7 @@ class SubjectsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
 
@@ -25,17 +25,20 @@ class SubjectsController extends Controller
     public function index()
     {
         //
-        if(Auth::user()->role=='admin')
-       {     
-               $subjets = Subject::all();
+    //     if(Auth::user()->role=='admin')
+    //    {     
+    //            $subjets = Subject::all();
        
-               return view('subjects.index',['subjects'=>$subjects]);}
-        $teacher = Teacher::where('id',Auth::user()->id)->first();
+    //            return view('subjects.index',['subjects'=>$subjects]);}
+    //     $teacher = Teacher::where('id',Auth::user()->id)->first();
       
-        if ($teacher) {
+    //     if ($teacher) {
            
-           return view('subjects.index',['subjects'=>$teacher->subjects]); 
-        }
+    //        return view('subjects.index',['subjects'=>$teacher->subjects]); 
+    //     }
+        $subjects = Subject::all();
+        return view('subjects.index', compact('subjects')); 
+
     }
 
     /**

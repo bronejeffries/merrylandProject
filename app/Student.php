@@ -34,8 +34,8 @@ class Student extends Model
                             'parmanentAddress',
                             'isActive'];
 
-    public function sclass(){
-    	return $this->belongsTo(Sclass::class);
+    public function stuclass(){
+    	return $this->belongsTo(Stuclass::class);
     }
 
     public function subjects(){

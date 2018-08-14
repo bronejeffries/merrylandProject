@@ -6,7 +6,7 @@
       <div class="card-body">
         <h4 class="card-title">Create A Subject</h4>
         <div class="">
-          <form class="" method="post" action="{{route('subjects.create')}}">
+          <form class="" method="post" action="{{route('subjects.store')}}">
             {{ csrf_field() }}
             <p class="card-description">
               Subject information

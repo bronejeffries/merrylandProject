@@ -5,7 +5,8 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Create A Teacher</h4>
-        <form class="form-sample" method="post" action="{{ route('teachers.store') }}">
+        {{-- {{ var_dump($errors) }} --}}
+        <form class="form-sample" method="post" action="{{ route('teachers.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="row">
             <div class="col-md-4">
@@ -38,7 +39,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">IDNo:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="ud_no"/>
+                      <input type="text" class="form-control" name="id_no"/>
                     </div>
                   </div>
                 </div>

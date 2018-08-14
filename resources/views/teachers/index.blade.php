@@ -1,3 +1,4 @@
+
 @extends('layouts.layout')
 @section('content')
 <div class="card">
@@ -6,23 +7,19 @@
     <div class="text col-md-4">
         <a href="{{ route('teachers.create') }}" class="text-primary">
         <i class="mdi mdi-plus"></i>
-        Add  a teacher
+        Add  a Teacher
         </a>
     </div>
-  
-  <div class=" col-md-8">
-    
-    </div>
    </div>
-   <table class="table table-responsive">
+   <table class="table">
        <thead>
-           <tr>
-               <th>Name</th>
-               <th>contact</th>
-               <th>IDNo</th>
-               <th> Status</th>
-               <th>Email</th>
-               <th>Action</th>
+           <tr>    
+            <th>Name</th>
+            <th>contact</th>
+            <th>IDNo</th>
+            <th> Status</th>
+            <th>Email</th>
+            <th>Action</th>
            </tr>
        </thead>
    </table>
