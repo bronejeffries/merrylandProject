@@ -39,8 +39,8 @@
                   <div class="col-sm-9">
                     <select class="form-control" name="available_for_stdgroup_id">
                       <option value="select_level">select level...</option>
-                      <option value="Olevel">O'Level</option>
-                      <option value="Alevel">A'level</option>
+                      <option value="1">O'Level</option>
+                      <option value="2">A'level</option>
                     </select>
                   </div>
                 </div>
@@ -50,13 +50,13 @@
               <div class="col-md-9">
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label"> Specify If Core Subject</label>
-                  <div class="col-sm-4">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="is_core">
-                      </label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="is_core">
+                        <option value="select_level">specify category</option>
+                        <option value="1">Core</option>
+                        <option value="0">Not Core</option>
+                      </select>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-sm-3 pull-right">
               <div class="form-group">
-              <button class="btn btn-sm btn-outline-success" type="submit">Import from/as Excel</button>
+              <button class="btn btn-sm btn-outline-success" type="button" disabled>Upload from/as Excel</button>
             </div>
             </div>
           </div>

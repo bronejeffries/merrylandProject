@@ -23,7 +23,7 @@ class Subject extends Model
 
     public function exams(){
 
-    	return $this->hasMany('App\Exam');
+        return $this->hasMany('App\Exam','subject_id');
     }
 
     public function teachers(){
@@ -34,6 +34,8 @@ class Subject extends Model
 
 
     public function studentgroup(){
-    	return $this->belongsTo('App\StudentGroup');
+
+        return $this->belongsTo('App\StudentGroup','available_for_stdgroup_id');
+
     }
 }

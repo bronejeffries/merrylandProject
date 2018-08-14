@@ -15,6 +15,7 @@
                     <th>No.</th>
                     <th>Student Name</th>
                     <th>Class</th>
+                    <th>Test</th>
                     <th>mid(/40)</th>
                     <th>final(/60)</th>
                     <th>Total(/100)</th>
@@ -25,36 +26,41 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td class="p-3">
-                      <div class="d-flex align-items-center">
-                      Agaba Davis</div>
-                    </td>
-                    <td class="p-3">Senior One</td>
-                    <td class="p-3"><div class="d-flex align-items-center">33</div></td>
-                    <td class="p-3"><div class="d-flex align-items-center">50</div></td>
-                    <td class="p-3"><div class="d-flex align-items-center">83</div></td>
-                    <td class="p-3"><div class="d-flex align-items-center">A</div></td>
-                    <td class="p-3"><div class="d-flex align-items-center">3</div></td>
-                    <td class="p-3"><div class="d-flex align-items-center">2019</div></td>
-                    <td class="p-3">
-                    <a class="btn btn-sm btn-outline-success" href="{{ route('exams.edit',1)}}">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger" href="#"
-                  onclick="
-                  var result = confirm('Are you sure you wish to delete this Exam?');
-                      if( result ){
-                              event.preventDefault();
-                              document.getElementById('delete-form').submit();
-                      }
-                          "> Delete</a>
-                      <form id="delete-form" action="{{ route('exams.destroy',1) }}"
-                method="POST" style="display: none;">
-                        <input type="hidden" name="_method" value="delete">
-                        {{ csrf_field() }}
-              </form>
-                    </td>
-                  </tr>
+                  @foreach ($subject_exams as $index => $exam)
+                    <tr>
+                      <td>{{$index+1}}</td>
+                      <td class="p-3">
+                        <div class="d-flex align-items-center">
+                        {{$exam->student_id}}</div>
+                      </td>
+                      <td class="p-3">{{$exam->sclass_id}}</td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->test}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->mid}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->final}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->total}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->grade}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->term_id}}</div></td>
+                      <td class="p-3"><div class="d-flex align-items-center">{{$exam->academic_year_id}}</div></td>
+                      <td class="p-3">
+                      <a class="btn btn-sm btn-outline-success" href="{{ route('exams.edit',[$exam->id])}}">Edit</a>
+                      <a class="btn btn-sm btn-outline-danger" href="#"
+                    onclick="
+                    var result = confirm('Are you sure you wish to delete this Exam?');
+                        if( result ){
+                                event.preventDefault();
+                                document.getElementById('delete-form-{{$exam->id}}').submit();
+                        }
+                            ">
+                        Delete</a>
+                        <form id="delete-form-{{$exam->id}}" action="{{ route('exams.destroy',[$exam->id]) }}"
+                  method="POST" style="display: none;">
+                          <input type="hidden" name="_method" value="delete">
+                          {{ csrf_field() }}
+                </form>
+                      </td>
+                    </tr>
+                  @endforeach
+
                 </tbody>
               </table>
             </div>

@@ -16,7 +16,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Year <span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" name="year" autofocus required/>
+                  <input type="date" class="form-control" name="academic_year_id" autofocus required/>
                 </div>
               </div>
             </div>
@@ -24,11 +24,11 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Term <span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="term" required>
-                    <option value="Male">select term...</option>
-                    <option value="term_id_1">1</option>
-                    <option value="term_id_2">2</option>
-                    <option value="term_id_3">3</option>
+                  <select class="form-control" name="term_id" required>
+                    <option value="selectterm">select term...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                   </select>
                 </div>
               </div>
@@ -43,9 +43,10 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Code<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="subject_code" required>
-                    <option value="subject_code_1">Physics code</option>
-                    <option value="subject_code_2">Chemistry code</option>
+                  <select class="form-control" name="subject_id" required>
+                    @foreach ($subjects as $subject )
+                      <option value="{{$subject->id}}">{{$subject->code}}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
@@ -62,9 +63,9 @@
                 <div class="col-sm-9">
                   <select class="form-control" name="class_id" required>
                     <option value="">Select class...</option>
-                    <option value="class_id_1">One</option>
-                    <option value="class_id_2">Two</option>
-                    <option value="class_id_2">Three</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                   </select>
                 </div>
               </div>
@@ -90,9 +91,9 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Registration No.</label>
+                <label class="col-sm-3 col-form-label">Student Id.</label>
                 <div class="col-sm-9">
-                  <input type="text" name="regNo" class="form-control" />
+                  <input type="number" name="student_id" class="form-control" />
                 </div>
               </div>
             </div>
@@ -108,9 +109,9 @@
                 <div class="col-sm-9">
                   <select class="form-control" name="assesment_type" required>
                     <option value="">Select Type...</option>
-                    <option value="stream_id_1">Test</option>
-                    <option value="stream_id_2">Mid Term</option>
-                    <option value="stream_id_3">Final Exam</option>
+                    <option value="test">Test</option>
+                    <option value="mid">Mid Term</option>
+                    <option value="final">Final Exam</option>
                   </select>
                 </div>
               </div>
@@ -119,7 +120,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Marks</label>
                 <div class="col-sm-9">
-                  <input type="number" name="marks" class="form-control"/>
+                  <input type="number" name="marks" class="form-control" />
                 </div>
               </div>
             </div>
@@ -131,7 +132,7 @@
               if class marks ready in csv file
               <div class="form-group row">
                 <div class="col-sm-4">
-                  <button type="button" class="btn btn-sm btn-light pull-left" onclick="document.getElementById('upload').style.display='block'" name=" "> UPLOAD CLASS MARKS AS CSV </button>
+                  <button type="button" class="btn btn-sm btn-light pull-left" onclick="document.getElementById('upload').style.display='block'" name=" " disabled> UPLOAD CLASS MARKS AS CSV </button>
                 </div>
               </div>
             </div>
@@ -139,7 +140,7 @@
               <div class="form-group row">
                 <label class="col-sm-5 col-form-label">MARKS CSV FILE</label>
                 <div class="col-sm-9">
-                  <input type="file" name="marks" class="form-control" />
+                  <input type="file" name="marks_upload" class="form-control" />
                 </div>
               </div>
             </div>

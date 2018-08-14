@@ -16,4 +16,10 @@ class StudentGroup extends Model
 
     	return $this->hasMany(Student::class,'level');
     }
+
+    public function subjects(){
+
+    	return $this->hasMany(Subject::class,'available_for_stdgroup_id');
+    }
+
 }

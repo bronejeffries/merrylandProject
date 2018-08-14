@@ -23,7 +23,7 @@ Route::resource('teachers', 'TeachersController');
 Route::resource('subjects','SubjectsController');
 
 Route::resource('exams','ExamsController');
-Route::get('exams/subjectexams/{subject_id}','ExamsController@showSubjectExams')->name('exams.showSubjectExams');
+Route::get('exams/subjectexams/{subject_id?}','ExamsController@showSubjectExams')->name('exams.showSubjectExams');
 
 
 Route::resource('students', 'StudentsController');
