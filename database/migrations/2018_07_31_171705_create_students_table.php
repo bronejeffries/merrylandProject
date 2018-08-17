@@ -16,12 +16,11 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('regiNo',20);
-            $table->integer('sclass_id')->unsigned();
+            $table->integer('sclass_stream_id')->unsigned();
             $table->integer('level')->unsigned();
             $table->integer('mentor_id')->unsigned();
             $table->string('stream',10);
             $table->boolean('shift');
-
             $table->string('firstName',60);
             $table->string('middleName',60)->nullable();
             $table->string('lastName',60);
