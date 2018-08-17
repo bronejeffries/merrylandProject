@@ -4,24 +4,24 @@
       <ul class="nav">
 
         <li class="nav-item"> <a class="nav-link" href="/"> <i class="mdi mdi-compass-outline menu-icon"></i> <span class="menu-title">Dashboard</span> </a> </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiBasicSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-buffer menu-icon"></i> <span class="menu-title">Class</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+        <!-- <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#uiBasicSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-sitemap menu-icon"></i> <span class="menu-title">Class</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
           <div class="collapse" id="uiBasicSubmenu">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="pages/ui-features/accordions.html">Add Class</a></li>
               <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">View List</a></li>
             </ul>
           </div>
-        </li>
+        </li> -->
 
 
-      <li class="nav-item"> <a class="nav-link" href="{{ route('teachers.index') }}"> <i class="mdi mdi-calendar-check menu-icon"></i> <span class="menu-title">Teacher</span> </a> </li>
+      <li class="nav-item"> <a class="nav-link" href="{{ route('teachers.index') }}"> <i class="mdi mdi-teacher menu-icon"></i> <span class="menu-title">Teacher</span> </a> </li>
         <li class="nav-item"> <a class="nav-link" href="{{ route('students.index') }}"> <i class="mdi mdi-calendar-check menu-icon"></i> <span class="menu-title">Student</span> </a> </li>
         <li class="nav-item"> <a class="nav-link" href="{{ route('subjects.index') }}"> <i class="mdi mdi-content-copy menu-icon"></i> <span class="menu-title">Subjects</span> </a> </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#tablesSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-table-large menu-icon"></i> <span class="menu-title">Academics</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#tablesSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-book menu-icon"></i> <span class="menu-title">Academics</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
 
           <div class="collapse" id="tablesSubmenu">
             <ul class="nav flex-column sub-menu">
-             <li class="nav-item"> <a class="nav-link" href="pages/tables/data-table.html">Class</a></li>
+             <li class="nav-item"> <a class="nav-link" href="{{ route('classes.index') }}">Class</a></li>
               <li class="nav-item"> <a class="nav-link" href="pages/tables/js-grid.html">Stream</a></li>
               <li class="nav-item"> <a class="nav-link" href="pages/tables/data-table.html">Assignment</a></li>
               <li class="nav-item"> <a class="nav-link" href="pages/tables/js-grid.html">Routine</a></li>

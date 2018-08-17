@@ -21,6 +21,9 @@ Route::get('/', function () {
 // });
 Route::resource('teachers', 'TeachersController');
 Route::resource('subjects','SubjectsController');
+Route::resource('classes','SclassStreamController');
+Route::resource('streams','StreamController');
+Route::resource('sclasses','SclassController');
 
 Route::resource('exams','ExamsController');
 Route::get('exams/subjectexams/{subject_id?}','ExamsController@showSubjectExams')->name('exams.showSubjectExams');

@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class SclassStream extends Model
 {
-  public function sclass(){
-    return $this->belongsTo(Sclass::class);
+  protected $fillable = [
+      'sclass_id',
+      'stream_id'
+    ];
+
+  public function sclass()
+  {
+    return $this->belongsTo('App\Sclass');
   }
-  public function stream(){
-    return $this->belongsTo(Sclass::class);
+  public function stream()
+  {
+    return $this->belongsTo('App\Stream');
   }
-  public function student(){
-    return $this->belongsToMany(Sclass::class);
-  }
+
 }

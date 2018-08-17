@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSclassStreamsTable extends Migration
+class UpdateSclassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSclassStreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sclass_streams', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sclass_id')->unsigned();
-            $table->integer('stream_id')->unsigned();
-            $table->timestamps();
-        });
+      Schema::table('sclasses', function (Blueprint $table) {
+          $table->integer('class_number')->unsigned();
+      });
     }
 
     /**
@@ -28,6 +25,8 @@ class CreateSclassStreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sclass_streams');
+      Schema::table('sclasses', function (Blueprint $table) {
+          $table->dropColumn('class_number');
+      });
     }
 }

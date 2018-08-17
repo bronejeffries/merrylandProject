@@ -6,18 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sclass extends Model
 {
+  protected $fillable = [
+      'name',
+      'class_number'
+    ];
 
-//  protected $table = 'sclasses';
-  public function academicyear(){
-    return $this->belongsTo(AcademicYear::class);
-  }
-
-  public function sclass_stream(){
-    return $this->hasMany(SclassStream::class);
-  }
-
-  public function subject(){
-    return $this->belongsToMany(Subject::class);
-  }
-
+    public function student()
+    {
+        return $this->hasMany('App\Student');
+    }
+    public function sclass_stream()
+    {
+        return $this->hasMany('App\SclassStream','sclass_id');
+    }
 }
