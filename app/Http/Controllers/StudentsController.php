@@ -73,7 +73,7 @@ class StudentsController extends Controller
                             'parmanentAddress'=>'nullable',
                             'village'=>'required',
                             'subjects' =>'required',
-                            'sub-county'=>'required',
+                            'sub_county'=>'required',
                             'county'=>'required',
                             'country'=>'required'
         ]);

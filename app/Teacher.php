@@ -11,6 +11,8 @@ class Teacher extends Model
 
     protected $guarded = [];
 
+    protected $casts=["others"=>"array"];
+
     public function students(){
     	return $this->hasMany(Student::class,'mentor_id');
     }

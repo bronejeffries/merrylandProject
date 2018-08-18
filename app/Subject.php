@@ -9,7 +9,7 @@ class Subject extends Model
     //
 
 
-    protected $fillable = ['code','name','is_core','available_for_stdgroup_id'];
+    protected $guarded = [];
 
     public function students(){
 

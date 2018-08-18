@@ -169,7 +169,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Co-Activity</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="extraActivity" placeholder="co-activity"/>
+                      <input type="text" class="form-control" name="extraActivity" placeholder="coactivity"/>
                     </div>
                   </div>
                 </div>
@@ -219,10 +219,10 @@
                 <div class="col-sm-9">
                   <select class="form-control" name="country">
                     <option>Choose ...</option>
-                    <option>Uganda</option>
-                    <option>Italy</option>
-                    <option>Russia</option>
-                    <option>Britain</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Britain">Britain</option>
                   </select>
                 </div>
               </div>
