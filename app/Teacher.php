@@ -18,12 +18,10 @@ class Teacher extends Model
     }
 
     public function role(){
-
     	return $this->belongsTo(Role::class);
     }
 
     public function subjects(){
-
     	return $this->belongsToMany('App\Subject');
     }
 
