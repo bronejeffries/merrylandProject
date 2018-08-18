@@ -11,7 +11,7 @@
         </a>
     </div>
    </div>
-   <table class="table">
+   <table class="table" id="example">
        <thead>
            <tr>    
             <th>Name</th>
@@ -27,7 +27,7 @@
                <td>{{ $teacher->first_name}} {{  $teacher->last_name }}</td>
                <td>{{ $teacher->id_no }}</td>
                <td>{{ $teacher->religion }}</td>
-               <td>math</td>
+               
                <td>
                     <a class=" badge badge-pill btn btn-xs btn-outline-success" href="{{ route('teachers.edit',[$teacher->id]) }}">Edit</a>
                     <a class="badge badge-pill btn btn-sm btn-outline-danger" href="#"

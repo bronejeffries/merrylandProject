@@ -20,4 +20,10 @@ class SclassStream extends Model
     return $this->belongsTo('App\Stream');
   }
 
+  public function students(){
+
+    return $this->hasOne(Student::class);
+
+  }
+
 }

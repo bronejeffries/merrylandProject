@@ -15,7 +15,9 @@
 Route::get('/', function () {
     return view('dashboard.index');
 });
-
+Route::get('/test', function () {
+    return App\Student::find(1)->sclass_stream;
+});
 // Route::get('/', function () {
 //     return view('home');
 // });

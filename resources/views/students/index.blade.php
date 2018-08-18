@@ -17,17 +17,27 @@
       </select>
     </div>
    </div>
-   <table class="table">
+   <table class="table" id="example">
        <thead>
            <tr>
                <th>Name</th>
                <th>Class</th>
-               <th>StudentNo</th>
+               <th>RegNo</th>
                <th> Stream</th>
                <th>Group</th>
                <th>Action</th>
            </tr>
        </thead>
+       <tbody>
+
+         @foreach($students as $student)
+         <tr>
+           <td>{{ $student->firstName }} {{ $student->lastName }} </td>
+           <td>wer</td>
+         </tr>
+
+         @endforeach
+       </tbody>
    </table>
 </div>
 </div>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use App\Sclass;
 use App\Subject;
-Use App\StuClass;
 use App\Stream;
 use App\Student;
+use Session;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 
@@ -31,10 +32,11 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        $classes = StuClass::all();
+        $classes = Sclass::all();
         $streams = Stream::all();
         $subjects = Subject::all();
-        return view('students.create', compact('streams', 'classes','subjects'));
+        $teachers = Teacher::all();
+        return view('students.create', compact('streams', 'classes','subjects', 'teachers'));
     }
 
     /**
@@ -48,7 +50,7 @@ class StudentsController extends Controller
         // dd($request->all());
         $this->validate($request, [
                              'regiNo'=>'required',
-                            'class_id'=>'required',
+                            'sclass_stream_id'=>'required',
                             'level'=> 'required',
                             'mentor_id'=>'required',
                             'stream' => 'required',
@@ -62,25 +64,26 @@ class StudentsController extends Controller
                             'dob'=> 'required',
                             'photo'=>'required|mimes:jpeg,bmp,png,jpg,svg',
                             'extraActivity'=>'nullable',
-                            'remarks'=>'nullable',
                             'fatherName'=>'nullable',
                             'fatherCellNo'=>'nullable',
                             'motherName'=>'nullable',
                             'motherCellNo'=>'nullable',
                             'localGuardian'=>'nullable',
                             'localGuardianCell'=>'nullable',
-                            'presentAddress'=>'nullable',
-                            'parmanentAddress'=>'nullable',
                             'village'=>'required',
-                            'subjects' =>'required',
                             'sub_county'=>'required',
                             'county'=>'required',
-                            'country'=>'required'
+                            'country'=>'required',
+                            'org_name'=>'nullable',
+                            'org_contact'=>'nullable',
+                            'contact_person_name'=>'nullable',
+                            'contact_person_address' =>'nullable',
+                            'contact_person_contact'=>'nullable',
         ]);
         $photo = $request->file('photo');
         Student::create([
             'regiNo'=>$request->regiNo,
-           'class_id'=>$request->class_id,
+           'sclass_stream_id'=>$request->sclass_stream_id,
            'level'=> $request->level,
            'mentor_id'=>$request->mentor_id,
            'stream' => $request->stream,
@@ -94,9 +97,8 @@ class StudentsController extends Controller
            'dob'=> $request->dob,
            'photo'=> $photo->store('public/storage'),
            'extraActivity'=>$request->extraActivity,
-           'remarks'=>$request->remarks,
            'village'=>$request->village,
-           'sub_county'=>$request->sub_country,
+           'sub_county'=>$request->sub_county,
            'county'=>$request->county,
            'country'=>$request->country,
            'contact_person_name'=>$request->contact_person_name,
@@ -108,8 +110,6 @@ class StudentsController extends Controller
            'motherCellNo'=>$request->metherCellNo,
            'localGuardian'=>$request->localGuardian,
            'localGuardianCell'=>$request->localGuardianCell,
-           'presentAddress'=>$request->presentAddress,
-           'parmanentAddress'=>$request->permanentAddress,
            'org_name'=>$request->org_name,
            'org_contact'=>$request->org_contact
 ]);
@@ -168,9 +168,7 @@ class StudentsController extends Controller
                             'motherName'=>'nullable',
                             'motherCellNo'=>'nullable',
                             'localGuardian'=>'nullable',
-                            'localGuardianCell'=>'nullable',
-                            'presentAddress'=>'nullable',
-                            'parmanentAddress'=>'nullable'
+                            'localGuardianCell'=>'nullable'
         ]));
         Session::flash('success', 'You have succsssfully updated a  student');
         return redirect()->route('students.index');
