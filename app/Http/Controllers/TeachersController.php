@@ -38,7 +38,8 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        
+       $data= $this->validate($request, [
             'first_name'=>'required',
             'middle_name'=>'required',
             'last_name'=>'required',
@@ -55,7 +56,9 @@ class TeachersController extends Controller
             'country'=>'required'
         ]);
         $photo = $request->file('photo');
+       
        $teacher =  Teacher::create([
+           
             'first_name'=>$request->first_name,
             'middle_name'=>$request->middle_name,
             'last_name'=>$request->last_name,
@@ -66,11 +69,16 @@ class TeachersController extends Controller
             'photo'=>$photo->store('public/storage'),
             'others'=>$request->others,
             'village'=>$request->village,
-            'sub_county'=>$request->sub_country,
+            'sub_county'=>$request->sub_county,
             'county'=>$request->county,
             'country'=>$request->country
         ]);
-        $teacher->subjects()->attach($request->subjects);
+        // dd($request->subjects);
+        foreach($request->subjects as $subject){
+            $teacher->subjects()->attach($subject);
+
+        }
+
         Session::flash('success', 'You have successfully created a teacher');
         return redirect()->route('teachers.index');
     }

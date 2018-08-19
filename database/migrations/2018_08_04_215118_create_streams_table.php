@@ -14,12 +14,7 @@ class CreateStreamsTable extends Migration
         Schema::create('streams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('number_of_students');
             $table->timestamps();
-            $table->integer('sclass_id')->unsigned();
-
-            // $table->foreign('sclass_id')->references('id')->on('sclasses');
-
         });
     }
 
