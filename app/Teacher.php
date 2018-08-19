@@ -9,7 +9,7 @@ class Teacher extends Model
 {
     //
 
-    protected $fillable = ['name'];
+    protected $guarded= [];
 
     public function students(){
     	return $this->hasMany(Student::class,'mentor_id');
