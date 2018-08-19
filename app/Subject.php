@@ -9,16 +9,16 @@ class Subject extends Model
     //
 
 
-    protected $fillable = ['code','name','is_core','available_for_stdgroup_id'];
+    protected $guarded = [];
 
     public function students(){
 
     	return $this->belongsToMany(Student::class);
     }
 
-    public function stuclasses(){
+    public function sclasses(){
 
-    	return $this->belongsToMany(StuClass::class);
+    	return $this->belongsToMany(Sclass::class);
     }
 
     public function exams(){

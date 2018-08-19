@@ -6,36 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    //
-    protected $fillable = ['regiNo',
-                            'stdNo',
-                            'class_id',
-                            'level',
-                            'mentor_id',
-                            'stream',
-                            'shift',
-                            'firstName',
-                            'middleName',
-                            'lastName',
-                            'gender',
-                            'religion',
-                            'nationality',
-                            'dob',
-                            'photo',
-                            'extraActivity',
-                            'remarks',
-                            'fatherName',
-                            'fatherCellNo',
-                            'motherName',
-                            'motherCellNo',
-                            'localGuardian',
-                            'localGuardianCell',
-                            'presentAddress',
-                            'parmanentAddress',
-                            'isActive'];
+    protected $casts = [
+        'level'=> 'integer'
+    ];
+    protected $guarded = [];
 
-    public function stuclass(){
-    	return $this->belongsTo(Stuclass::class);
+    public function sclass_stream(){
+    	return $this->hasOne(Sclass::class);
     }
 
     public function subjects(){
@@ -49,4 +26,10 @@ class Student extends Model
     public function mentor(){
         return $this->belongsTo(Teacher::class,'mentor_id');
     }
+
+     public function stream_class(){
+
+    return $this->belongsTo(SclassStream::class);
+    
+  }
 }

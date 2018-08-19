@@ -52,7 +52,7 @@
                                 <div class="col-sm-4">
                                   <div class="form-radio">
                                     <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="level" id="shift1" value="" checked>
+                                      <input type="radio" class="form-check-input" name="level" value="0" id="shift1" checked>
                                       O'Level
                                     </label>
                                   </div>
@@ -60,7 +60,7 @@
                                 <div class="col-sm-5">
                                   <div class="form-radio">
                                     <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="level" id="shift2" value="option2">
+                                      <input type="radio" class="form-check-input" name="level" value="1" id="shift2">
                                      A'Level
                                     </label>
                                   </div>
@@ -73,7 +73,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">class</label>
                   <div class="col-sm-9">
-                    <select class="form-control" name="class" id="">
+                    <select class="form-control" name="sclass_stream_id" id="">
                       <option value="">Select Class</option>
                       @foreach ($classes as $class)
                           <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -140,7 +140,7 @@
                 <div class="col-sm-4">
                   <div class="form-radio">
                     <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="shift" >
+                      <input type="radio" class="form-check-input" name="shift" value="0">
                       Day
                     </label>
                   </div>
@@ -148,7 +148,7 @@
                 <div class="col-sm-5">
                   <div class="form-radio">
                     <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="shift" checked>
+                      <input type="radio" class="form-check-input" name="shift" value="1" checked>
                       Boarding
                     </label>
                   </div>
@@ -169,7 +169,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Co-Activity</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="extraActivity" placeholder="co-activity"/>
+                      <input type="text" class="form-control" name="extraActivity" placeholder="coactivity"/>
                     </div>
                   </div>
                 </div>
@@ -179,6 +179,21 @@
                     <div class="col-sm-9">
                       <input type="text" class="form-control" name="nationality" placeholder="nationality"/>
                     </div>
+                  </div>
+                </div>
+                 <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Mentor</label>
+                    <div class="col-sm-9">
+                    <select name="mentor_id" class="form-control">
+                      <option value="">choose a mentor</option>
+                      @foreach($teachers as $teacher)
+
+                      <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+
+                      @endforeach
+                    </select>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -219,10 +234,10 @@
                 <div class="col-sm-9">
                   <select class="form-control" name="country">
                     <option>Choose ...</option>
-                    <option>Uganda</option>
-                    <option>Italy</option>
-                    <option>Russia</option>
-                    <option>Britain</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Britain">Britain</option>
                   </select>
                 </div>
               </div>

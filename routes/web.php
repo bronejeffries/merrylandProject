@@ -15,12 +15,17 @@
 Route::get('/', function () {
     return view('dashboard.index');
 });
-
+Route::get('/test', function () {
+    return App\Student::find(1)->sclass_stream;
+});
 // Route::get('/', function () {
 //     return view('home');
 // });
 Route::resource('teachers', 'TeachersController');
 Route::resource('subjects','SubjectsController');
+Route::resource('classes','SclassStreamController');
+Route::resource('streams','StreamController');
+Route::resource('sclasses','SclassController');
 
 Route::resource('exams','ExamsController');
 Route::get('exams/subjectexams/{subject_id?}','ExamsController@showSubjectExams')->name('exams.showSubjectExams');
