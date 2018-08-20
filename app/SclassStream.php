@@ -22,8 +22,12 @@ class SclassStream extends Model
 
   public function students(){
 
-    return $this->hasOne(Student::class);
+    return $this->hasMany(Student::class);
 
+  }
+  public function enrollments(){
+
+    return $this->hasMany(EnrollmentStudent::class,'sclassstream_id');
   }
 
 }

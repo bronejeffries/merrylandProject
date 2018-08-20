@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Term extends Model
 {
-    public function academicyear(){
-      return $this->hasMany(AcademicYear::class);
+
+    public function enrollments(){
+      return $this->hasMany(Enrollment::class,'term_id');
     }
 
     public function exam(){

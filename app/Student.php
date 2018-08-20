@@ -30,6 +30,14 @@ class Student extends Model
      public function stream_class(){
 
     return $this->belongsTo(SclassStream::class);
-    
+
   }
+
+  public function enrollments(){
+
+    return $this->hasMany(EnrollmentStudent::class,'student_id');
+  }
+
+
+
 }

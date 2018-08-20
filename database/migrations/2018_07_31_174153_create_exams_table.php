@@ -17,7 +17,7 @@ class CreateExamsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
 
-            $table->integer('sclass_id')->unsigned();
+            $table->integer('sclassstream_id')->unsigned();
 
 
             // $table->string('exam',50);
@@ -34,8 +34,7 @@ class CreateExamsTable extends Migration
 
             //term details
 
-            $table->string('term_id');
-            $table->date('academic_year_id');
+            $table->integer('enrollment_id')->unsigned();
 
 
             // $table->decimal('point',3,2);

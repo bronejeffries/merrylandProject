@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAcademicYearsTable extends Migration
+class CreateEnrollmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAcademicYearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('academic_years', function (Blueprint $table) {
+        Schema::create('enrollments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('period');
-            $table->timestamps();
             $table->integer('term_id')->unsigned();
+            $table->timestamps();
 
             // $table->foreign('term_id')->references('id')->on('terms');
 
@@ -31,6 +31,6 @@ class CreateAcademicYearsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academic_years');
+        Schema::dropIfExists('enrollments');
     }
 }

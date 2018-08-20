@@ -4,15 +4,14 @@
 <div class=" col-lg-12 col-lg-offset-3 ">
     <div class="card">
       <div class="card-header">
-        <a class="text-warning" href="{{ route('subjects.create') }}"><i class="mdi mdi-plus"></i>Add Subject</a>
+        <a class="text-warning" href="{{ route('subjects.create') }}">
+          <i class="mdi mdi-plus"></i>
+          Add Subject
+        </a>
       </div>
-      <div class="card-body">
-        <h4 class="card-title text-success">Subjects list</h4>
 
-        <div class="col-lg-10 grid-margin stretch-card">
-          <div class="card dashboard-table-advanced">
-            <div class="table-responsive">
-              <table class="table">
+        <h4 class="card-title text-success">Subjects list</h4>
+              <table class="table" id="example">
                 <thead>
                   <tr>
                     <th>No.</th>
@@ -31,9 +30,9 @@
                         <div class="d-flex align-items-center">
                         {{$subject->code}} </div>
                       </td>
-                      <td class="p-2">{{$subject->name}}</td>
-                      <td class="p-2"><div class="d-flex align-items-center">12</div></td>
-                      <td class="p-2"><div class="d-flex align-items-center">12</div></td>
+                      <td class="p-2">{{$subject->studentgroup->name}}</td>
+                      <td class="p-2"><div class="d-flex align-items-center">{{$subject->teachers->count()}}</div></td>
+                      <td class="p-2"><div class="d-flex align-items-center">{{$subject->Students->count()}}</div></td>
                       <td class="p-2">
                         <a class=" badge badge-pill btn btn-sm btn-outline-success" href="{{ route('subjects.edit',[$subject->id]) }}">Edit</a>
                         <a class="badge badge-pill btn btn-sm btn-outline-danger" href="#"
@@ -56,10 +55,9 @@
 
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+
     </div>
   </div>
 </div>
