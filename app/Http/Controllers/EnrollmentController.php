@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\SclassStream;
 use App\Enrollment;
-use App\Stream;
-use App\Subject;
 use Illuminate\Http\Request;
 
-class SclassStreamController extends Controller
+class EnrollmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class SclassStreamController extends Controller
      */
     public function index()
     {
-        $class = SclassStream::all();
-        $enrollments = Enrollment::all();
-        $subjects = Subject::all();
-        return view('class.index', ['class' => $class, 'enrollments'=>$enrollments,'subjects'=>$subjects]);
+        //
     }
 
     /**
@@ -30,8 +24,7 @@ class SclassStreamController extends Controller
      */
     public function create()
     {
-        $stream = Stream::all();
-        return view('class.create', ['stream' => $stream]);
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class SclassStreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Enrollment  $enrollment
      * @return \Illuminate\Http\Response
      */
-    public function show(SclassStream $sclassStream)
+    public function show(Enrollment $enrollment)
     {
         //
     }
@@ -59,10 +52,10 @@ class SclassStreamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Enrollment  $enrollment
      * @return \Illuminate\Http\Response
      */
-    public function edit(SclassStream $sclassStream)
+    public function edit(Enrollment $enrollment)
     {
         //
     }
@@ -71,10 +64,10 @@ class SclassStreamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Enrollment  $enrollment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SclassStream $sclassStream)
+    public function update(Request $request, Enrollment $enrollment)
     {
         //
     }
@@ -82,10 +75,10 @@ class SclassStreamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Enrollment  $enrollment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SclassStream $sclassStream)
+    public function destroy(Enrollment $enrollment)
     {
         //
     }

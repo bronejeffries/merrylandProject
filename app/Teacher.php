@@ -9,7 +9,7 @@ class Teacher extends Model
 {
     //
 
-    protected $guarded = [];
+    protected $guarded= [];
 
     protected $casts=["others"=>"array"];
 

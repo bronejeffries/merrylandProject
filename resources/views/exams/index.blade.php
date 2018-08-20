@@ -6,10 +6,8 @@
       <div class="card-body">
         <h4 class="card-title text-success">Exams list</h4>
 
-        <div class="col-lg-10 grid-margin stretch-card">
-          <div class="card dashboard-table-advanced">
-            <div class="table-responsive">
-              <table class="table">
+
+              <table class="table" id="example">
                 <thead>
                   <tr>
                     <th>No.</th>
@@ -38,9 +36,7 @@
 
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
