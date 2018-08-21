@@ -85,10 +85,10 @@ class ExamsController extends Controller
 
 
         if (count($exams)>0) {
-          return redirect()->route('home')
+           return redirect()->route('exams.index')
             ->with('success' ,count($exams). 'exams(s) created successfully');
         }else {
-          return redirect()->route('home')
+          return redirect()->route('exams.index')
           ->with('errors', ['0 exams  created']);
         }
 
