@@ -29,6 +29,15 @@
             </ul>
           </div>
         </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#enrollSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-tick menu-icon"></i> <span class="menu-title">Academic Periods</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+
+          <div class="collapse" id="enrollSubmenu">
+            <ul class="nav flex-column sub-menu">
+             <li class="nav-item"> <a class="nav-link" href="{{ route('enrollments.index') }}">Enrollments</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('enrollmentstudents.index') }}">Enrolled Students</a></li>
+            </ul>
+          </div>
+        </li>
 
         <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#layoutsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-arrow-expand-all menu-icon"></i> <span class="menu-title">Attendance</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
           <div class="collapse" id="layoutsSubmenu">

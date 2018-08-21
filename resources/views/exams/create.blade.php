@@ -5,34 +5,6 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Add Subject Marks</h4>
-{{-- 
-        <table class="table" id="example">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>subject Code</th>
-              <th>subject Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($subjects as $index=>$subject)
-              <tr>
-                <td>{{$index + 1}}</td>
-                <td class="p-2">
-                  <div class="d-flex align-items-center">
-                  {{$subject->code}}</div>
-                </td>
-                <td class="p-2">{{$subject->name}}</td>
-                <td class="p-2">
-                  <a class="badge badge-pill btn btn-sm btn-outline-success" href="{{ route('exams.showSubjectExams',[$subject->id]) }}">Add Exam Results</a>
-                </td>
-              </tr>
-            @endforeach
-
-
-          </tbody>
-        </table> --}}
 
         <form class="form-sample" action="{{route('exams.store')}}" method="post">
           {{ csrf_field() }}
