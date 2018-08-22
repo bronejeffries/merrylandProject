@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
+use App\Staff;
 use Illuminate\Http\Request;
-use App\Subject;
 use Session;
-class TeachersController extends Controller
+class StaffsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        return view('teachers.index', compact('teachers'));
+        $staffs = Staff::all();
+        return view('staffs.index', compact('staffs'));
     }
 
     /**
@@ -26,8 +25,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        $subjects= Subject::all();
-        return view('teachers.create', compact('subjects'));
+        return view('staffs.create');
     }
 
     /**
@@ -48,16 +46,14 @@ class TeachersController extends Controller
             'date_of_birth'=>'required',
             'religion'=>'required',
             'photo'=>'required|mimes:jpeg,bmp,png,jpg,svg',
-            'others'=>'nullable',
             'village'=>'required',
-            'subjects' =>'required',
             'sub_county'=>'required',
             'county'=>'required',
             'country'=>'required'
         ]);
         $photo = $request->file('photo');
        
-       $teacher =  Teacher::create([
+       $teacher =  Staff::create([
            
             'first_name'=>$request->first_name,
             'middle_name'=>$request->middle_name,
@@ -67,20 +63,13 @@ class TeachersController extends Controller
             'date_of_birth'=>$request->date_of_birth,
             'religion'=>$request->religion,
             'photo'=>$photo->store('public/storage'),
-            'others'=>$request->others,
             'village'=>$request->village,
             'sub_county'=>$request->sub_county,
             'county'=>$request->county,
             'country'=>$request->country
         ]);
-        // dd($request->subjects);
-        foreach($request->subjects as $subject){
-            $teacher->subjects()->attach($subject);
-
-        }
-
         Session::flash('success', 'You have successfully created a teacher');
-        return redirect()->route('teachers.index');
+        return redirect()->route('staffs.index');
     }
 
     /**
@@ -89,9 +78,9 @@ class TeachersController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show(Staff $staff)
     {
-        return view('teachers.show',compact('teacher'));
+        return view('staffs.show',compact('staff'));
     }
 
     /**
@@ -100,9 +89,9 @@ class TeachersController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit(Staff $staff)
     {
-        return view('teachers.edit',compact('teacher'));
+        return view('staffs.edit',compact('staff'));
     }
 
     /**
@@ -112,13 +101,13 @@ class TeachersController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, Staff $staff)
     {
-        $teacher->update($request->validate([
+        $staff->update($request->validate([
 
             ]));
             Session::flash('success', 'You have successfully updated a teacher');
-            return redirect()->route('teachers.index');
+            return redirect()->route('staff.index');
     }
 
     /**
@@ -127,9 +116,9 @@ class TeachersController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Staff $staff)
     {
-        $teacher->delete();
-        return redirect()->route('teachers.index');
+        $staff->delete();
+        return redirect()->route('staffs.index');
     }
 }

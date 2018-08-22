@@ -23,13 +23,13 @@ class Student extends Model
     	return $this->belongsTo(StudentGroup::class,'level');
     }
 
-    public function mentor(){
-        return $this->belongsTo(Teacher::class,'mentor_id');
+    public function caretaker(){
+        return $this->belongsTo(Caretaker::class);
     }
 
      public function stream_class(){
 
-    return $this->belongsTo(SclassStream::class);
+    return $this->belongsTo(SclassStream::class, 'sclass_stream_id');
     
   }
 }
