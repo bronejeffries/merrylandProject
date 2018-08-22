@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enrollment;
+use App\Term;
 use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
@@ -15,6 +16,7 @@ class EnrollmentController extends Controller
     public function index()
     {
         //
+        return view('enrollments.index',['enrollments'=>Enrollment::all(),'terms'=>Term::all()]);
     }
 
     /**
@@ -36,6 +38,20 @@ class EnrollmentController extends Controller
     public function store(Request $request)
     {
         //
+        $checkenrollment = Enrollment::where('period',$request->period)
+                            ->where('term_id',$request->term_id)->first();
+        if ($checkenrollment) {
+          return redirect()->route('enrollments.index')
+             ->with('errors',['Period already enrolled']);
+        }else {
+          $enrollment = Enrollment::create([
+                 'period'=>$request->period,
+                 'term_id'=>$request->term_id,
+             ]);
+             return redirect()->route('enrollments.index')
+                ->with('success','Period Enrolled successfully');
+
+        }
     }
 
     /**
@@ -81,5 +97,11 @@ class EnrollmentController extends Controller
     public function destroy(Enrollment $enrollment)
     {
         //
+        if ($enrollment->delete()) {
+
+            return redirect()->route('enrollment.index')->with('success','Enrollment cleared');
+        }
+
+        return back()->withInput();
     }
 }

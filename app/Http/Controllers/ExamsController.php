@@ -56,7 +56,7 @@ class ExamsController extends Controller
 
       //check if subject exam column has not yet been created already
 
-      $exams = array();
+      $exams=[];
 
       foreach($request->student_id as $index => $student) {
         $findExam = Exam::where('student_id',$student)
@@ -69,9 +69,9 @@ class ExamsController extends Controller
                   continue;
           }
           else {
-            $exams = Exam::create([
+            $exams[] = Exam::create([
                    'student_id'=>$student,
-                   'sclassstream_id'=>$request->sclassstream_id,
+                   'sclassstream_id'=>$request->sclass_stream_id,
                    'subject_id'=>$request->subject_id,
                    $request->assesment_type=>$request->marks[$index],
                    'enrollment_id'=>$request->enrollment_id,
@@ -85,11 +85,13 @@ class ExamsController extends Controller
 
 
         if (count($exams)>0) {
-          return redirect()->route('home')
-            ->with('success' ,count($exams)+'(s) created successfully');
+           return redirect()->route('exams.index')
+            ->with('success' ,count($exams). 'exams(s) created successfully');
+        }else {
+          return redirect()->route('exams.index')
+          ->with('errors', ['0 exams  created']);
         }
-        return redirect()->route('home')
-        ->with('errors', ['0 exams  created']);
+
               // ;
               // return redirect()->route('exams.', ['company'=> $company->id])
               // ;
@@ -147,7 +149,7 @@ if ($subjectid) {
         return view('exams.addmarks',['subjectstudents'=>$subjectstudents,
                                       'subject'=>$subject,
                                       'enrollment'=>$enrollment,
-                                      'assesment_type'=>$request->assessment_type,
+                                      'assessment_type'=>$request->assessment_type,
                                       'class_id'=>$request->sclassstream_id]);
 
     }
@@ -176,8 +178,9 @@ if ($subjectid) {
         //
         // dd($request->all());
         // $subject = Subject::where('code',$request->subject_code)->first();
-        $index = array_search($exam->student_id,$request->student_id,true);
-
+        // dd($request->all(),$exam);
+        $index = array_search($exam->student_id,$request->student_id);
+        dump($index,$request->marks[$index]);
         $examUpdate = Exam::where('id', $exam->id)
                                ->update([
                                  $request->assesment_type=>$request->marks[$index],

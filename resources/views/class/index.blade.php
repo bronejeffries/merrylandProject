@@ -72,7 +72,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Assessment Category<span class="text-danger">*</span></label>
                     <div class="col-sm-6">
-                      <select class="form-control" name="assesment_type" required>
+                      <select class="form-control" name="assessment_type" required>
                         <option value="">Select....</option>
                           <option value="test">Test</option>
                           <option value="mid">Mid</option>

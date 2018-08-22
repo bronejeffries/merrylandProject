@@ -21,8 +21,8 @@
           <tbody>
             @forelse ($subjectstudents as $index=>$student)
               <tr>
-                <td>{{$index}}</td>
-                <td>{{$student->name}}</td>
+                <td>{{$index + 1}}</td>
+                <td>{{$student->firstname}}</td>
                 <td> <input type="text" class="form-control" name="student_id[]" value="{{$student->id}}" readonly> </td>
                 <td> <input type="text" class="form-control" name="assesment_type" value="{{$assessment_type}}" readonly></td>
                 <td>
