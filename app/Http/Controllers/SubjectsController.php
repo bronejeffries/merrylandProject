@@ -58,8 +58,7 @@ class SubjectsController extends Controller
                 ->with('success' , 'Subject created successfully');
             }
             return back()->withInput()
-            ->with('error' , 'Subject Couldn\'t be created');
-
+            ->with('error' , "Subject Couldn\'t be created");
 
     }
 
