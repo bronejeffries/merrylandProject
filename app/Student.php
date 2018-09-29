@@ -23,12 +23,16 @@ class Student extends Model
     	return $this->belongsTo(StudentGroup::class,'level');
     }
 
-    public function mentor(){
-        return $this->belongsTo(Teacher::class,'mentor_id');
+    public function caretaker(){
+        return $this->belongsTo(Caretaker::class);
     }
 
      public function stream_class(){
 
+<<<<<<< HEAD
+    return $this->belongsTo(SclassStream::class, 'sclass_stream_id');
+    
+=======
     return $this->belongsTo(SclassStream::class);
 
   }
@@ -36,6 +40,7 @@ class Student extends Model
   public function enrollments(){
 
     return $this->hasMany(EnrollmentStudent::class,'student_id');
+>>>>>>> 510ade0d55a61ec27ef1a0204e66b10aaf3ac1d2
   }
 
 

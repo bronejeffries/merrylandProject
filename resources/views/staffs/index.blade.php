@@ -5,9 +5,9 @@
 <div class="card-body">
 <div class="card-title row">
     <div class="text col-md-4">
-        <a href="{{ route('teachers.create') }}" class="text-primary">
+        <a href="{{ route('staffs.create') }}" class="text-primary">
         <i class="mdi mdi-plus"></i>
-        Add  a Teacher
+        Add  a Staff
         </a>
     </div>
    </div>
@@ -22,24 +22,24 @@
        </thead>
        <tbody>
            
-           @foreach ($teachers as $teacher)
+           @foreach ($staffs as $staff)
            <tr>
-               <td>{{ $teacher->first_name}} {{  $teacher->last_name }}</td>
-               <td>{{ $teacher->id_no }}</td>
-               <td>{{ $teacher->religion }}</td>
+               <td>{{ $staff->first_name}} {{  $staff->last_name }}</td>
+               <td>{{ $staff->id_no }}</td>
+               <td>{{ $staff->religion }}</td>
                
                <td>
-                    <a class=" badge badge-pill btn btn-xs btn-outline-success" href="{{ route('teachers.edit',[$teacher->id]) }}">Edit</a>
-                    <a class="badge badge-pill btn btn-sm btn-outline-danger" href="#"
+                    <a class=" badge badge-pill btn btn-xs btn-outline-success" href="{{ route('staffs.edit',[$staff->id]) }}">Edit</a>
+                    <a class="badge badge-pill btn btn-xs btn-outline-danger" href="#"
                   onclick="
                   var result = confirm('Are you sure you wish to delete this teacher?');
                       if( result ){
                               event.preventDefault();
-                              document.getElementById('delete-form-{{$teacher->id}}').submit();
+                              document.getElementById('delete-form-{{$staff->id}}').submit();
                       }
                           ">
                       Delete</a>
-                      <form id="delete-form-{{$teacher->id}}" action="{{ route('teachers.destroy',[$teacher->id]) }}"
+                      <form id="delete-form-{{$staff->id}}" action="{{ route('staffs.destroy',[$staff->id]) }}"
                         method="POST" style="display: none;">
                         {{ csrf_field() }}
                         <input type="hidden" class="btn btn-xs" name="_method" value="delete">

@@ -4,16 +4,16 @@
 <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Create A Teacher</h4>
-        {{ var_dump($errors) }}
-        <form class="form-sample" method="post" action="{{ route('teachers.store') }}" enctype="multipart/form-data">
+        <h4 class="card-title">Create A staff</h4>
+        {{-- {{ var_dump($errors) }} --}}
+        <form class="form-sample" method="post" action="{{ route('staffs.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="row">
             <div class="col-md-4">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">First Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="first_name"/>
+                  <input type="text" class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{old('first_name')  }}"/>
                 </div>
               </div>
             </div>
@@ -21,7 +21,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Middle Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="middle_name" />
+                  <input type="text" class="form-control" name="middle_name"  value="{{old('middle_name')  }}" />
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Last Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="last_name"/>
+                    <input type="text" class="form-control" name="last_name"  value="{{old('last_name')  }}"/>
                   </div>
                 </div>
               </div>
@@ -39,7 +39,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">IDNo:</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="id_no"/>
+                      <input type="text" class="form-control" name="id_no"  value="{{old('id_no')  }}"/>
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Gender</label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="gender">
+                  <select class="form-control" name="gender" >
                         <option value="">Select a gender..</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -59,7 +59,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" name="date_of_birth" placeholder="dd/mm/yyyy"/>
+                  <input type="date" class="form-control" name="date_of_birth" placeholder="dd/mm/yyyy"  value="{{old('date_of_birth')  }}"/>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Religion</label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="religion">
+                  <select class="form-control" name="religion" value="{{ old('religion') }}">
                       <option value="">Select a religion..</option>
                     <option value="Muslim">Muslim</option>
                     <option value="Protestant">Protestant</option>
@@ -83,39 +83,12 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Photo</label>
                     <div class="col-sm-9">
-                        <input type="file" class="form-control" name="photo"/>
+                        <input type="file" class="form-control" name="photo" value"{{ old('photo') }}"/>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label ">Subjects</label>
-                      <div class="col-sm-9">
-                          <select name="subjects[]" class="form-control " id="" multiple>
-                              <option value="">select...</option>
-                              @foreach($subjects as $subject)
-                                <option value="{{ $subject->id }}">{{ $subject->code }}</option>
-                                @endforeach
-                            </select>
-                      </div>
-                    </div>
-                  </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Other Role</label>
-                          <div class="col-sm-9">
-                            <select name="others[]" class="form-control" id="">
-                              <option value="">select...</option>
-                              @foreach(['Director of Studies', 'Class Teacher','House Master', 'Foods Master'] as$index => $subject)
-                                <option value="{{ $index}}">{{ $subject}}</option>
-                                @endforeach
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
           <p class="card-description">
             Address
           </p>
@@ -125,7 +98,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Village</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="village" />
+                  <input type="text" class="form-control" name="village" value"{{ old('village') }}"/>
                 </div>
               </div>
             </div>
@@ -133,7 +106,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Sub-County</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="sub_county" />
+                  <input type="text" class="form-control" name="sub_county" value"{{ old('sub_county') }}"/>
                 </div>
               </div>
             </div>
@@ -143,7 +116,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">County</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="county"/>
+                  <input type="text" class="form-control" name="county" value"{{ old('county') }}"/>
                 </div>
               </div>
             </div>
@@ -151,7 +124,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Country</label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="country">
+                  <select class="form-control" name="country" value"{{ old('country') }}">
                     <option value="">Choose ...</option>
                     <option value="Uganda">Uganda</option>
                     <option value="Kenya">Italy</option>
@@ -164,7 +137,7 @@
           </div>
          
                 <div class="form-group">
-                    <button type="submit" class="btn btn-outline-primary"> Add Teacher</button>
+                    <button type="submit" class="btn btn-outline-primary"> Add Staff</button>
                 </div>
         </form>
       </div>

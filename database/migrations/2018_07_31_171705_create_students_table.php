@@ -18,8 +18,6 @@ class CreateStudentsTable extends Migration
             $table->string('regiNo');
             $table->integer('sclass_stream_id')->unsigned();
             $table->integer('level')->unsigned();
-            $table->integer('mentor_id')->unsigned();
-            $table->string('stream',10);
             $table->boolean('shift');
             $table->string('firstName',60);
             $table->string('middleName',60)->nullable();
@@ -34,21 +32,7 @@ class CreateStudentsTable extends Migration
             $table->string('country');
             $table->string('county');
              $table->string('sub_county');
-        // gurdian information
-            $table->string('fatherName',180)->nullable();
-            $table->string('fatherCellNo',15)->nullable();
-            $table->string('motherName',180)->nullable();
-            $table->string('motherCellNo',15)->nullable();
-            $table->string('localGuardian',180)->nullable();
-            $table->string('localGuardianCell',15)->nullable();
-            $table->string('org_name')->nullable();
-            $table->string('org_contact')->nullable();
-            $table->string('contact_person_name')->nullable();
-            $table->string('contact_person_address')->nullable();
-            $table->string('contact_person_contact')->nullable();
-
-            //student status
-            $table->boolean('isActive')->default(True);
+            $table->boolean('isActive')->default(1);
 
             // //define foreign keys
 
