@@ -31,7 +31,7 @@
               </tr>
             @empty
               <div class="col-md-10 col-md-offset-5">
-                    <h4 class="card-title  text-warning">Add Students first </h4>
+                    <h4 class="card-title  text-danger">Add Students first!! </h4>
               </div>
 
             @endforelse

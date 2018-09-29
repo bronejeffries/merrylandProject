@@ -36,6 +36,7 @@
             </div>
           </div>
           <br>
+          <hr>
           <p class="card-description text-success">
             Subject Details
           </p>
@@ -54,6 +55,7 @@
             </div>
           </div>
           <br>
+          <hr>
           <p class="card-description text-success">
             Class Details
           </p>
@@ -86,6 +88,7 @@
             </div>
           </div>
           <br>
+          ,<hr>
           <p class="card-description text-success">
             Student Details
           </p>
@@ -94,12 +97,18 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Student Id.</label>
                 <div class="col-sm-9">
-                  <input type="number" name="student_id" class="form-control" />
+                  <input type="number" name="student_id" value="{{old('student_id')}}" class="form-control" />
+                  @if($errors->has('student_id'))
+                  <span class="text-danger">
+                    {{$errors->first('student_id')}}
+                  </span>
+                  @endif
                 </div>
               </div>
             </div>
           </div>
           <br>
+          <hr>
           <p class="card-description text-success">
             Marks Details
           </p>
@@ -108,7 +117,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Assesment Type<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                  <select class="form-control" name="assesment_type" required>
+                  <select class="form-control" name="assesment_type" value={{old('assesment_type')}} required>
                     <option value="">Select Type...</option>
                     <option value="test">Test</option>
                     <option value="mid">Mid Term</option>
@@ -121,7 +130,12 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Marks</label>
                 <div class="col-sm-9">
-                  <input type="number" name="marks" class="form-control" />
+                  <input type="number" name="marks" value="{{old('marks')}}" class="form-control" />
+                  @if($errors->has('marks'))
+                  <span class="text-danger">
+                    {{$errors->first('marks')}}
+                  </span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -141,7 +155,7 @@
               <div class="form-group row">
                 <label class="col-sm-5 col-form-label">MARKS CSV FILE</label>
                 <div class="col-sm-9">
-                  <input type="file" name="marks_upload" class="form-control" />
+                  <input type="file" name="marks_upload" value="{{old('marks_upload')}}" class="form-control" />
                 </div>
               </div>
             </div>

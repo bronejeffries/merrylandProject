@@ -69,6 +69,7 @@ class ExamsController extends Controller
                   continue;
           }
           else {
+
             $exams[] = Exam::create([
                    'student_id'=>$student,
                    'sclassstream_id'=>$request->sclass_stream_id,

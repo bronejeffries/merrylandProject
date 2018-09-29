@@ -15,29 +15,12 @@ class SubjectsController extends Controller
      * @return \Illuminate\Http\Response
     */
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-
-
 
     public function index()
     {
-    //     if(Auth::user()->role=='admin')
-    //    {     
-    //            $subjets = Subject::all();
-       
-    //            return view('subjects.index',['subjects'=>$subjects]);}
-    //     $teacher = Teacher::where('id',Auth::user()->id)->first();
-      
-    //     if ($teacher) {
-           
-    //        return view('subjects.index',['subjects'=>$teacher->subjects]); 
-    //     }
+
         $subjects = Subject::all();
-        return view('subjects.index', compact('subjects')); 
+        return view('subjects.index', compact('subjects'));
 
     }
 
@@ -60,10 +43,16 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        
-     
+      $data= $this->validate($request, [
+           'code'=>'required',
+           'name'=>'required',
+           'is_core'=>'required',
+           'available_for_stdgroup_id'=>'required',
+       ]);
+
          $subject = Subject::create(
-            ['code'=>$request->input('code'),
+            [
+            'code'=>$request->input('code'),
             'name'=>$request->input('name'),
              'is_core'=>$request->is_core,
               'available_for_stdgroup_id'=>$request->input('available_for_stdgroup_id')
@@ -74,8 +63,7 @@ class SubjectsController extends Controller
                 ->with('success' , 'Subject created successfully');
             }
             return back()->withInput()
-            ->with('error' , 'Subject Couldn\'t be created');
-
+            ->with('error' , "Subject Couldn\'t be created");
 
     }
 

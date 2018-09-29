@@ -27,7 +27,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           @include('partials.success')
-          @include('partials.errors')
+          {{-- @include('partials.errors') --}}
           @yield('content')
         </div>
         <!-- content-wrapper ends -->
