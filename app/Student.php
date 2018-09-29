@@ -29,18 +29,15 @@ class Student extends Model
 
      public function stream_class(){
 
-<<<<<<< HEAD
-    return $this->belongsTo(SclassStream::class, 'sclass_stream_id');
-    
-=======
-    return $this->belongsTo(SclassStream::class);
 
-  }
+    return $this->belongsTo(SclassStream::class, 'sclass_stream_id');
+
+    }
 
   public function enrollments(){
 
     return $this->hasMany(EnrollmentStudent::class,'student_id');
->>>>>>> 510ade0d55a61ec27ef1a0204e66b10aaf3ac1d2
+
   }
 
 
