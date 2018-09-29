@@ -32,7 +32,7 @@ class Student extends Model
 
     return $this->belongsTo(SclassStream::class, 'sclass_stream_id');
 
-  }
+    }
 
   public function enrollments(){
 

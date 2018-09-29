@@ -22,7 +22,7 @@
             <div class="count-indicator online-status online"></div>
           </div>
         </li>
-        <li class="nav-item d-none d-sm-block dropdown"> <a class="btn bg-transparent dropdown-toggle text-default-color" id="userDropdown" href="#" data-toggle="dropdown"> Hi Agaba Davis </a>
+        <li class="nav-item d-none d-sm-block dropdown"> <a class="btn bg-transparent dropdown-toggle text-default-color" id="userDropdown" href="#" data-toggle="dropdown"> Hi Admin </a>
           <div class="dropdown-menu navbar-dropdown preview-list p-3" aria-labelledby="userDropdown"> <a href="#" class="btn btn-block btn-link text-dark">View Profile</a> <a href="#" class="btn btn-block btn-link text-dark">Account Settings</a>
             <div class="dropdown-divider mb-4"></div><a href="#" class="btn btn-block btn-primary">Logout</a> </div>
         </li>
