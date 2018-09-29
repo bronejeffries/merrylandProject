@@ -30,7 +30,14 @@
             </ul>
           </div>
         </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#enrollSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-tick menu-icon"></i> <span class="menu-title">Academic Periods</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+        <li class="nav-item">
+           <a class="nav-link" data-toggle="collapse" href="#enrollSubmenu" aria-expanded="false" aria-controls="collapseExample"> 
+            <i class="mdi mdi-tick menu-icon"></i> 
+            <span class="menu-title">
+            Academic Periods
+          </span> 
+          <i class="mdi mdi-menu-down menu-arrow"></i>
+         </a>
 
           <div class="collapse" id="enrollSubmenu">
             <ul class="nav flex-column sub-menu">
@@ -40,7 +47,7 @@
           </div>
         </li>
 
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#layoutsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-arrow-expand-all menu-icon"></i> <span class="menu-title">Attendance</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
+        <li style="display:none;" class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#layoutsSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-arrow-expand-all menu-icon"></i> <span class="menu-title">Attendance</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
           <div class="collapse" id="layoutsSubmenu">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="pages/layout/boxed-layout.html">Student Attendance</a> </li>
@@ -98,46 +105,5 @@
             </ul>
           </div>
         </li>
-
-
-        <li class="nav-item"> <a class="nav-link" data-toggle="collapse" href="#EditorSubmenu" aria-expanded="false" aria-controls="collapseExample"> <i class="mdi mdi-code-brackets menu-icon"></i> <span class="menu-title">Editors</span> <i class="mdi mdi-menu-down menu-arrow"></i> </a>
-          <div class="collapse" id="EditorSubmenu">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.html">Text editors</a></li>
-              <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.html">Code editors</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="pages/apps/email.html">
-           <i class="mdi mdi-email-outline menu-icon"></i> 
-           <span class="menu-title">E-mail</span> 
-         </a>
-          </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="pages/apps/calendar.html"> 
-            <i class="mdi mdi-calendar-check menu-icon"></i> <span class="menu-title">Calendar</span>
-           </a>
-         </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="pages/apps/todo.html"> 
-            <i class="mdi mdi-calendar-text menu-icon"></i>
-             <span class="menu-title">To-do list</span> 
-           </a>
-         </li>
-        <li class="nav-item">
-         <a class="nav-link" href="pages/apps/gallery.html">
-          <i class="mdi mdi-folder-multiple-image menu-icon"></i>
-          <span class="menu-title">Gallery</span> 
-        </a>
-         </li>
-        <li class="nav-item">
-         <a class="nav-link" href="pages/documentation.html"> 
-          <i class="mdi mdi-file-document-box menu-icon"></i> <span class="menu-title">Documentation</span> 
-        </a>
-      </li>
       </ul>
-    </nav>
-
-        </ul>
     </nav>
