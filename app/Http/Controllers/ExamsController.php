@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exam;
 use App\Subject;
+use App\Enrollment;
 use Illuminate\Http\Request;
 
 class ExamsController extends Controller
@@ -52,41 +53,48 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        //check if subject exam column has not yet been created already
-        $findExam = Exam::where('student_id',$request->input('student_id'))
-                        ->where('sclass_id',$request->input('class_id'))
-                        ->where('subject_id',$request->input('subject_id'))
-                        ->where('term_id',$request->input('term_id'))
-                        ->where('academic_year_id',$request->input('academic_year_id'))
+
+      //check if subject exam column has not yet been created already
+
+      $exams=[];
+
+      foreach($request->student_id as $index => $student) {
+        $findExam = Exam::where('student_id',$student)
+                        ->where('sclassstream_id',$request->sclass_stream_id)
+                        ->where('subject_id',$request->subject_id)
+                        ->where('enrollment_id',$request->enrollment_id)
                         ->first();
         if ($findExam) {
+                  $this->update($request,$findExam);
+                  continue;
+          }
+          else {
+            $exams[] = Exam::create([
+                   'student_id'=>$student,
+                   'sclassstream_id'=>$request->sclass_stream_id,
+                   'subject_id'=>$request->subject_id,
+                   $request->assesment_type=>$request->marks[$index],
+                   'enrollment_id'=>$request->enrollment_id,
+                   'grade'=>'A',
+               ]);
 
-            update($request,$findExam->id);
+
+          }
         }
 
-        //if the exam doesnot exist
-
-        // dd($request->all());
-         $exam = Exam::create([
-                'student_id'=>$request->input('student_id'),
-                'sclass_id'=>$request->input('class_id'),
-                'subject_id'=>$request->input('subject_id'),
-                $request->input('assesment_type')=>$request->input('marks'),
-                'term_id'=>$request->input('term_id'),
-                'academic_year_id'=>$request->input('academic_year_id'),
-                'grade'=>'A',
-            ]);
 
 
-            if($exam){
+        if (count($exams)>0) {
+           return redirect()->route('exams.index')
+            ->with('success' ,count($exams). 'exams(s) created successfully');
+        }else {
+          return redirect()->route('exams.index')
+          ->with('errors', ['0 exams  created']);
+        }
 
-                return back();
-                // return redirect()->route('exams.', ['company'=> $company->id])
-                // ->with('success' , 'Company created successfully');
-            }
-
-            return back()->withInput();
-            // ->with('errors', 'Error creating new company');
+              // ;
+              // return redirect()->route('exams.', ['company'=> $company->id])
+              // ;
 
     }
 
@@ -118,7 +126,32 @@ if ($subjectid) {
       return view('exams.show_subjectExams',compact('subject_exams'));
 
         }
-      
+
+    }
+    /**
+     * Display the students of specified resource.
+     *
+     * @param  \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function showStudents(Request $request)
+    {
+      //
+      $subject = Subject::find($request->subject_id);
+      $enrollment = Enrollment::find($request->enrollment_id);
+      $classenrollments =  $enrollment->enrolled_students
+                            ->where('sclassstream_id',$request->sclassstream_id)
+                            ->pluck('student_id');
+
+        $subjectstudents = $subject->students->wherein('id',$classenrollments);
+
+
+        return view('exams.addmarks',['subjectstudents'=>$subjectstudents,
+                                      'subject'=>$subject,
+                                      'enrollment'=>$enrollment,
+                                      'assessment_type'=>$request->assessment_type,
+                                      'class_id'=>$request->sclassstream_id]);
+
     }
 
 
@@ -143,6 +176,26 @@ if ($subjectid) {
     public function update(Request $request, Exam $exam)
     {
         //
+        // dd($request->all());
+        // $subject = Subject::where('code',$request->subject_code)->first();
+        // dd($request->all(),$exam);
+        $index = array_search($exam->student_id,$request->student_id);
+        dump($index,$request->marks[$index]);
+        $examUpdate = Exam::where('id', $exam->id)
+                               ->update([
+                                 $request->assesment_type=>$request->marks[$index],
+                               ]);
+
+      if($examUpdate){
+
+         return redirect()->route('exams.index')
+         ->with('success' , 'Exam updated successfully');
+
+     }
+     //redirect
+     return back()->withInput()
+     ->with('error' , 'Error updating subject');
+
     }
 
     /**

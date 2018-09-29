@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\EnrollmentStudent;
 use App\SclassStream;
 use App\Enrollment;
-use App\Stream;
-use App\Subject;
+use App\Student;
 use Illuminate\Http\Request;
 
-class SclassStreamController extends Controller
+class EnrollmentStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,20 @@ class SclassStreamController extends Controller
      */
     public function index()
     {
-        $class = SclassStream::all();
-        $enrollments = Enrollment::all();
-        $subjects = Subject::all();
-        return view('class.index', ['class' => $class, 'enrollments'=>$enrollments,'subjects'=>$subjects]);
+        //
+
+        return view('enrollmentstudents.index',['enrolledstudents'=>EnrollmentStudent::all(),
+                                                'classes'=>SclassStream::all(),
+                                                'enrollments'=>Enrollment::all()]);
+    }
+
+
+
+    public function period(Request $request){
+
+        return view('enrollmentstudents.enroll',['enrollment_period'=>Enrollment::find($request->enrollment_period),
+                                                'students'=>Student::all()]);
+
     }
 
     /**
@@ -30,8 +40,7 @@ class SclassStreamController extends Controller
      */
     public function create()
     {
-        $stream = Stream::all();
-        return view('class.create', ['stream' => $stream]);
+        //
     }
 
     /**
@@ -48,10 +57,10 @@ class SclassStreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\EnrollmentStudent  $enrollmentStudent
      * @return \Illuminate\Http\Response
      */
-    public function show(SclassStream $sclassStream)
+    public function show(EnrollmentStudent $enrollmentStudent)
     {
         //
     }
@@ -59,10 +68,10 @@ class SclassStreamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\EnrollmentStudent  $enrollmentStudent
      * @return \Illuminate\Http\Response
      */
-    public function edit(SclassStream $sclassStream)
+    public function edit(EnrollmentStudent $enrollmentStudent)
     {
         //
     }
@@ -71,10 +80,10 @@ class SclassStreamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\EnrollmentStudent  $enrollmentStudent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SclassStream $sclassStream)
+    public function update(Request $request, EnrollmentStudent $enrollmentStudent)
     {
         //
     }
@@ -82,10 +91,10 @@ class SclassStreamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\EnrollmentStudent  $enrollmentStudent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SclassStream $sclassStream)
+    public function destroy(EnrollmentStudent $enrollmentStudent)
     {
         //
     }

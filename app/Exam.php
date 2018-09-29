@@ -8,7 +8,7 @@ class Exam extends Model
 {
     //
 
-       protected $fillable = ['student_id','sclass_id','subject_id','term_id','test','mid','final','grade','academic_year_id'];
+   protected $fillable = ['student_id','sclassstream_id','subject_id','test','mid','final','grade','enrollment_id'];
 
 
     public function subject(){
@@ -18,16 +18,13 @@ class Exam extends Model
 
     }
 
-    public function sclass(){
-        return $this->belongsTo('App\Sclass_');
+    public function sclassstream(){
+        return $this->belongsTo('App\SclassStream','sclassstream_id');
     }
 
-    public function academicyear(){
-        return $this->belongsTo('App\Academicyear');
-    }
-    public function term(){
-        return $this->belongsTo('App\Term');
-    }
+    public function enrollment(){
+        return $this->belongsTo('App\Enrollment','enrollment_id');
+}
 
     public function student(){
         return $this->belongsTo('App\Student');

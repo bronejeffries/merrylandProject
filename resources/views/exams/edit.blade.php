@@ -7,7 +7,7 @@
         <h4 class="card-title">Add Subject Marks</h4>
         <form class="form-sample" action="{{route('exams.update',[$exam->id])}}" method="post">
           {{ csrf_field() }}
-          {{-- @method('PUT') --}}
+          @method('PUT')
           <p class="card-description text-success">
             Academic year informaton
           </p>
@@ -15,20 +15,13 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Year <span class="text-danger">*</span></label>
+                <label class="col-sm-3 col-form-label">Enrollment <span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" value="{{$exam->academic_year_id}}" name="year" autofocus required/>
+                  <input type="text" class="form-control" value="{{$exam->enrollment->period}}-{{$exam->enrollment->term->name}}" required/>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Term <span class="text-danger">*</span></label>
-                <div class="col-sm-9">
-                      <input type="text" name="Term" value="{{$exam->term_id}}" class="form-control" />
-                </div>
-              </div>
-            </div>
+
           </div>
           <br>
           <p class="card-description text-success">
@@ -39,7 +32,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Code<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                      <input type="text" name="code" value="{{$exam->subject_id}}" class="form-control" />
+                      <input type="text" name="subject_code" value="{{$exam->subject->code}}" class="form-control">
                 </div>
               </div>
             </div>
@@ -53,7 +46,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Senior<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="text" name="class_name" value="{{$exam->sclass_id}}" class="form-control" />
+                    <input type="text" name="class_id" value="{{$exam->sclassstream->sclass->name}}" class="form-control" />
                 </div>
               </div>
             </div>
@@ -61,7 +54,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Stream<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                      <input type="text" name="stream" class="form-control" />
+                      <input type="text" name="stream" value="{{$exam->sclassstream->stream->name}}" class="form-control" />
                 </div>
               </div>
             </div>
@@ -75,7 +68,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Student Id.</label>
                 <div class="col-sm-9">
-                  <input type="text" name="student_id" value="{{$exam->student_id}}" class="form-control" />
+                  <input type="text" name="student_id[]" value="{{$exam->student_id}}" class="form-control" />
                 </div>
               </div>
             </div>
@@ -102,7 +95,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Marks</label>
                 <div class="col-sm-9">
-                  <input type="number" name="marks" class="form-control" />
+                  <input type="number" name="marks[]" class="form-control" />
                 </div>
               </div>
             </div>

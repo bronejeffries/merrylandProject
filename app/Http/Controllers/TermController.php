@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\SclassStream;
-use App\Enrollment;
-use App\Stream;
-use App\Subject;
+use App\Term;
 use Illuminate\Http\Request;
 
-class SclassStreamController extends Controller
+class TermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class SclassStreamController extends Controller
      */
     public function index()
     {
-        $class = SclassStream::all();
-        $enrollments = Enrollment::all();
-        $subjects = Subject::all();
-        return view('class.index', ['class' => $class, 'enrollments'=>$enrollments,'subjects'=>$subjects]);
+        //
     }
 
     /**
@@ -30,8 +24,7 @@ class SclassStreamController extends Controller
      */
     public function create()
     {
-        $stream = Stream::all();
-        return view('class.create', ['stream' => $stream]);
+        //
     }
 
     /**
@@ -43,15 +36,29 @@ class SclassStreamController extends Controller
     public function store(Request $request)
     {
         //
+                $checkperiod = Term::where('name',$request->term)->first();
+  
+                if ($checkperiod) {
+                  return redirect()->route('enrollments.index')
+                     ->with('errors',['Term already exists']);
+                }
+                else {
+                  $term = Term::create([
+                    'name'=>$request->term
+                  ]);
+                  return redirect()->route('enrollments.index')
+                     ->with('success','Term created successfully');
+                   }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function show(SclassStream $sclassStream)
+    public function show(Term $term)
     {
         //
     }
@@ -59,10 +66,10 @@ class SclassStreamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function edit(SclassStream $sclassStream)
+    public function edit(Term $term)
     {
         //
     }
@@ -71,10 +78,10 @@ class SclassStreamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SclassStream $sclassStream)
+    public function update(Request $request, Term $term)
     {
         //
     }
@@ -82,10 +89,10 @@ class SclassStreamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SclassStream  $sclassStream
+     * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SclassStream $sclassStream)
+    public function destroy(Term $term)
     {
         //
     }

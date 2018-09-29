@@ -5,6 +5,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Add Subject Marks</h4>
+
         <form class="form-sample" action="{{route('exams.store')}}" method="post">
           {{ csrf_field() }}
           <p class="card-description text-success">

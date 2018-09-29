@@ -14,7 +14,7 @@
 
 Route::get('/', function () {
     return view('dashboard.index');
-});
+})->name('home');
 Route::get('/test', function () {
     return App\Student::find(1)->stream_class;
 });
@@ -27,7 +27,13 @@ Route::resource('students.caretaker','CaretakerController');
 Route::resource('classes','SclassStreamController');
 Route::resource('streams','StreamController');
 Route::resource('sclasses','SclassController');
+Route::resource('enrollments','EnrollmentController');
+Route::resource('enrollmentstudents','EnrollmentStudentController');
+Route::post('enrollstudents','EnrollmentStudentController@period')->name('enrollmentstudents.period');
+Route::resource('terms','TermController');
+Route::resource("students.caretaker","CareTakerController");
 
+Route::post('addmarks','ExamsController@showStudents')->name('exams.specifyStudents');
 Route::resource('exams','ExamsController');
 Route::get('exams/subjectexams/{subject_id?}','ExamsController@showSubjectExams')->name('exams.showSubjectExams');
 
