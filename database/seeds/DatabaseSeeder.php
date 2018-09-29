@@ -22,5 +22,16 @@ class DatabaseSeeder extends Seeder
     App\Role::create([
             'name' => 'Director of Studies'
         ]);
+        App\StudentGroup::create(
+          [
+            'name'=>'OLevel'
+          ]
+        );
+        App\StudentGroup::create(
+          [
+            'name'=>'Alevel'
+          ]
+        );
     }
+
 }
